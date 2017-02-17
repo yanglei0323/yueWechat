@@ -1,0 +1,103 @@
+<!-- 充值支付 -->
+<div class="parent-container">
+	<div id="pay-container" class="font-color-9">
+		<div class="title-bar">
+		    <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+		    <span>支付</span>
+		</div>
+		<div class="pay">
+			<div class="item">
+				<span>订单号：<span ng-bind="id"></span></span>
+			</div>
+			<div class="item">
+				<span>购买类型：<span ng-bind="type" class="highlight-2"></span></span>
+			</div>
+			<div class="item">
+				<span>下单时间：<span ng-bind="time"></span></span>
+			</div>
+			<div class="item">
+				<span>储值金额：<span ng-bind="price"></span></span>
+			</div>
+			<div class="item" ng-click="selectRecommender()">
+				<span>选择推荐人<span class="font-size-24 font-color-9">(非必填项)</span></span>
+				<span class="pull-right">
+					<span ng-bind="designer.name"></span>
+					<img src="../../assets/images/arrow_grey.png" class="common-icon">
+				</span>
+			</div>
+			<div class="tips">
+				<span>支付方式(三十分钟内未付款，订单将自动取消)</span>
+				
+			</div>
+			<!-- <div class="type-item">
+				<span class="left">
+					<span class="type-icon">
+						<img src="../../assets/images/zhifubao_icon.png">
+					</span>
+					<span>支付宝钱包支付</span>
+				</span>
+				<span class="right">
+					<img src="../../assets/images/pay_selected.png">
+				</span>
+			</div> -->
+			<div class="type-item">
+				<span class="left">
+					<span class="type-icon">
+						<img src="../../assets/images/weixin_icon.png">
+					</span>
+					<span>微信支付</span>
+				</span>
+				<span class="right">
+					<img src="../../assets/images/pay_selected.png">
+				</span>
+			</div>
+			<!-- <div class="type-item">
+				<span class="left">
+					<span class="type-icon">
+						<img src="../../assets/images/yinlian_icon.png">
+					</span>
+					<span>银行卡支付</span>
+				</span>
+				<span class="right">
+					<img src="../../assets/images/pay_unselected.png">
+				</span>
+			</div>
+			<div class="type-item">
+				<span class="left">
+					<span class="type-icon">
+						<img src="../../assets/images/jd_icon.jpg">
+					</span>
+					<span>京东支付</span>
+				</span>
+				<span class="right">
+					<img src="../../assets/images/pay_unselected.png">
+				</span>
+			</div>
+			<div class="type-item">
+				<span class="left">
+					<span class="type-icon">
+						<img src="../../assets/images/baidu_icon.png">
+					</span>
+					<span>百度钱包</span>
+				</span>
+				<span class="right">
+					<img src="../../assets/images/pay_unselected.png">
+				</span>
+			</div>
+			<div class="type-item border-bottom-none">
+				<span class="left">
+					<span class="type-icon">
+						<img src="../../assets/images/apple_icon.png">
+					</span>
+					<span>apple pay</span>
+				</span>
+				<span class="right">
+					<img src="../../assets/images/pay_unselected.png">
+				</span>
+			</div> -->
+			<div class="pay-btn" ng-click="pay()">
+				立即支付
+			</div>
+		</div>
+	</div>
+</div>

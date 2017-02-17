@@ -1,0 +1,39 @@
+<div class="parent-container">
+	<div id="fashion-hairstyle">
+		<div class="title-bar">
+		    <span class="title-bar-left" back>
+		        <img src="../../assets/images/back.png">
+		    </span>
+		    <span>时尚发型</span>
+		</div>
+		<div class="hairstyle-nav">
+            <span class="item" ng-click="sort('popular')">
+                <span ng-hide="type=='popular'"><img src="../../assets/images/rexiao.png"></span>
+                <span ng-show="type=='popular'"><img src="../../assets/images/rexiao_h.png"></span>
+                <span ng-class="{'text':true,'text-highlight':type=='popular'}">综合</span>
+            </span>
+            <span class="item" ng-click="sort('latest')">
+                <span ng-hide="type=='latest'"><img src="../../assets/images/zuixin.png"></span>
+                <span ng-show="type=='latest'"><img src="../../assets/images/zuixin_h.png"></span>
+                <span ng-class="{'text':true,'text-highlight':type=='latest'}">最新</span>
+            </span>
+            <span class="item" ng-click="sort('hottest')">
+                <span ng-hide="type=='hottest'"><img src="../../assets/images/renqi.png"></span>
+                <span ng-show="type=='hottest'"><img src="../../assets/images/renqi_h.png"></span>
+                <span ng-class="{'text':true,'text-highlight':type=='hottest'}">人气</span>
+            </span>
+        </div>
+		<div infinite-scroll="getFashionHair()" infinite-scroll-disabled="loading" infinite-scroll-distance="0">
+            <div class="hairstyle-content">
+                <span ng-repeat="hair in fashionHairList" ng-click="showHairInfo(hair)">
+                    <img ng-src="{{hair.imgurl}}">
+                </span>
+            </div>
+            <div ng-hide="loaded" class="load">
+                <img src="../../assets/images/loading2.gif" class="common-icon">
+                正在加载...
+            </div>
+            <div ng-show="loaded" class="load"></i>没有更多内容</div>
+        </div>
+	</div>
+</div>

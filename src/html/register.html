@@ -1,0 +1,50 @@
+<div class="bg-white">
+    <div class="title-bar">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <span>注册</span>
+    </div>
+    <div id="register-container">
+        <div class="form-group">
+            <span class="icon">
+                <img src="../../assets/images/phone.png" alt="手机号" class="phone-icon">
+            </span>
+            <span class="text-container">
+                <input type="text" placeholder="请输入您的手机号" class="input-text" name="phone-num" ng-model="phoneNum" maxlength="11">
+            </span>
+        </div>
+        <div class="form-group margin-top-28 border-bottom-none code-container">
+            <div class="code">
+                <span class="icon">
+                    <img src="../../assets/images/code.png" alt="验证码" class="code-icon">
+                </span>
+                <span class="text-container">
+                    <input type="text" placeholder="请输验证码" class="input-text" ng-model="code" maxlength="4">
+                </span>
+            </div>
+            <div ng-class="{'get-code-btn':true,'unuseful':sending}" ng-click="getCode()" ng-bind="sendCodeText"></div>
+        </div>
+        <div class="form-group margin-top-28">
+            <span class="icon">
+                <img src="../../assets/images/lock.png" alt="密码" class="pwd-icon">
+            </span>
+            <span class="text-container">
+                <input type="password" placeholder="请输6-20位字母、数字或符号" class="input-text" ng-model="password" maxlength="20">
+            </span>
+        </div>
+        <div class="form-group margin-top-28">
+            <span class="icon">
+                <img src="../../assets/images/lock.png" class="pwd-icon">
+            </span>
+            <span class="text-container">
+                <input type="password" placeholder="请确认密码" class="input-text" maxlength="20" ng-model="repeatPwd">
+            </span>
+        </div>
+        <div id="register-btn" class="btn-common" ng-click="register()">
+            注&nbsp;&nbsp;&nbsp;&nbsp;册
+        </div>
+        <div class="agreement">
+            <span ng-class="{'icon-check-empty':!agree,'icon-check':agree,'text-highlight':agree}" ng-click="checkAgree()"></span>
+            <span class="text">我已阅读并同意<a ng-href="{{link}}">“个人信息保护政策”</a></span>
+        </div>
+    </div>
+</div>

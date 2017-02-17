@@ -1,0 +1,62 @@
+<!-- 购物车 -->
+<div class="parent-container">
+<div id="cart-container">
+<div class="title-bar">
+    <span class="title-bar-left" ng-click="tback()"><img src="../../assets/images/back.png"></span>
+    <span>购物车</span>
+    <span class="title-bar-right"><a href="javascript:void(0)" class="delete" ng-click="deleteCart()">删除</a></span>
+</div>
+<div class="goods">
+    <div class="item-container" ng-repeat="goods in cartList">
+        <div class="item">
+            <span class="item-img">
+                <img ng-src="{{goods.goods.imgurl}}">
+            </span>
+            <span class="item-info">
+                <span class="name" ng-bind="goods.goods.name"></span>
+                <span class="real-price">￥<span ng-bind="goods.goods.realprice"></span></span>
+                <span class="price original-price"><del>￥<span ng-bind="goods.goods.originalprice"></span></del></span>
+                <span class="price">会员价：￥<span ng-bind="goods.goods.vipprice"></span></span>
+            </span>
+        </div>
+        <div class="operation-panel">
+            <span class="left-panel">
+                <span class="selected-pic">
+                    <img src="../../assets/images/pay_unselected.png" ng-show="!goods.selected" ng-click="selectGoods(goods)">
+                    <img src="../../assets/images/pay_selected.png" ng-show="goods.selected" ng-click="selectGoods(goods)">
+                </span>
+                <span class="item-count">小计：￥<span ng-bind="goods.count"></span></span>
+            </span>
+            <span class="right-panel">
+                <span>数量：</span>
+                <span class="change-num">
+                    <span ng-click="increaseNum(goods)">
+                        <img src="../../assets/images/add.png" class="add-pic">
+                    </span>
+                    <span class="num" ng-bind="goods.num"></span>
+                    <span ng-click="decreaseNum(goods)">
+                        <img src="../../assets/images/reduce.png" class="reduce-pic">
+                    </span>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="bottom-panel">
+    <span class="left-panel">
+        <span class="select-pic">
+            <img src="../../assets/images/pay_unselected.png" alt="全选" ng-show="!isSelectAll" ng-click="selectAll()">
+            <img src="../../assets/images/pay_selected.png" alt="全选" ng-show="isSelectAll" ng-click="selectAll()">
+        </span>
+        <span>全选</span>
+    </span>
+    <span class="middle-panel">
+        <span class="count-num">合计：<span ng-bind="getTotalPrice()"></span>元</span>
+        <span class="price">已优惠：0元</span>
+    </span>
+    <span class="right-panel" ng-click="calculate()">
+        去结算
+    </span>
+</div>
+</div>
+</div>

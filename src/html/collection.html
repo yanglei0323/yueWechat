@@ -1,0 +1,65 @@
+<div class="parent-container">
+<div class="title-bar">
+    <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+    <span>我的收藏</span>
+</div>
+<div id="collection-container">
+    <div id="top-nav">
+        <!-- <span class="nav-item"><a href="javascript:void(0)" ng-class="{'selected': isDesigner}" ng-click="getDesigner()">优秀造型师</a></span>
+        <span class="nav-item"><a href="javascript:void(0)" ng-click="getFashionHair()" ng-class="{'selected': isHair}">时尚发型</a></span>
+        <span class="nav-item"><a href="javascript:void(0)" ng-click="getStarStore()" ng-class="{'selected': isStore}">明星门店</a></span>
+        <span class="nav-item"><a href="javascript:void(0)" ng-class="{'selected': isGoods}" ng-click="getGoods()">悦商品</a></span> -->
+        <span ng-class="{'nav-item':true,'selected':isDesigner}" ng-click="getDesigner()">优秀造型师</span>
+        <span ng-class="{'nav-item':true,'selected':isHair}" ng-click="getFashionHair()">时尚发型</span>
+        <span ng-class="{'nav-item':true,'selected':isStore}" ng-click="getStarStore()">明星门店</span>
+        <span ng-class="{'nav-item':true,'selected':isGoods}" ng-click="getGoods()">悦商品</span>
+    </div>
+    <div class="collection" ng-if="isDesigner && hasDesigner">
+        <div class="item" ng-repeat="designer in designerList" ng-click="toDesignerDetail(designer)">
+            <img ng-src="{{designer.imgurl}}">
+            <div class="info">
+                <span class="name"><span ng-bind="designer.name"></span></span>
+                <span class="store"><span ng-bind="designer.store.name"></span></span>
+                <span class="order"><span ng-bind="designer.collectnum"></span>单</span>
+            </div>
+        </div>
+    </div>
+    <div class="hairstyle-content" ng-if="isHair && hasHair">
+        <span ng-repeat="hair in hairList" ng-click="showHairInfo(hair)">
+            <img ng-src="{{hair.imgurl}}">
+        </span>
+    </div>
+    <div class="list-container" ng-if="isStore && hasStore">
+        <div class="list-item" ng-repeat="store in storeList" ng-click="toStoreDetail(store)">
+            <span><img ng-src="{{store.img1}}" class="store-img"></span>
+            <span class="info">
+                <span class="name" ng-bind="store.name"></span>
+                <span class="intro" ng-bind="store.info"></span>
+                <span class="price">
+                    <span class="star">
+                        <img ng-repeat="star in store.starUrl" ng-src="{{star.path}}">
+                    </span>
+                    <span>￥<span ng-bind="store.average"></span></span>
+                </span>
+                <span class="location">
+                    <span><img src="../../assets/images/location.png"></span>
+                    <span ng-bind="store.location"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+    <div class="goods-container" ng-if="isGoods && hasGoods">
+        <span class="item" ng-repeat="item in goodsList" ng-click="toGoodsDetail(item)">
+            <span><img ng-src="{{item.detailimgurl}}" class="goods-img"></span>
+            <span class="goods-name" ng-bind="item.name"></span>
+            <span class="goods-info">
+                <span>￥<span ng-bind="item.realprice"></span></span>
+                <span class="praise">
+                    <span><img src="../../assets/images/zan.png"></span>
+                    <span ng-bind="item.praisenum"></span>
+                </span>
+            </span>
+        </span>
+    </div>
+</div>
+</div>

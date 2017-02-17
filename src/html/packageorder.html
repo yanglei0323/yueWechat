@@ -1,0 +1,101 @@
+<div class="appointoder-container">
+    <div id="appoint-confirm-container">
+        <div class="title-bar">
+            <span class="title-bar-left" ng-click="back()"><img src="../../assets/images/back.png"></span>
+            <span>预约下单</span>
+        </div>
+        <div class="appointoder-userinfo">
+            <span class="orderteacher">预约老师：</span>
+            <div class="userheaderimg"><img ng-src="{{designer.avatar}}" alt=""></div>
+            <div class="username">
+                <span ng-bind="designer.name"></span><br />
+                <span ng-bind="designer.jobtitle"></span>
+            </div>
+        </div>
+        <div class="appointoder-odertime" ng-click="getordertime()">
+            <span class="ordertime">预约时间：</span>
+            <div class="order-time getodtime" ng-bind="serviceTime"></div>
+            <img src="../../assets/images/arrow_grey.png" alt="" class="timeimg">
+        </div>
+        <div class="appointoder-oderstore">
+            <span class="orderstore">服务门店：</span>
+            <div class="order-time" ng-bind="designer.store.name"></div>
+            <img src="../../assets/images/location.png" alt="" class="locationimg">
+        </div>
+        <div class="appointoder-orderservice">
+            <span class="orderservice">服务套餐：</span>
+            <div class="servicename">
+                <span class="name-item" ng-bind="packageinfo.name"></span>
+            </div>
+            <div class="servicenametime">
+                <span class="time-item">￥<span ng-bind="packageinfo.actualprice"></span></span>
+            </div>
+            
+        </div>
+        <!-- <div class="designer-info">
+        	<img ng-src="{{designer.avatar}}" class="designer-head-pic">
+        	<div class="info">
+        		<div class="top">
+        			<span ng-bind="designer.name" class="name"></span>
+        			<span class="phone" ng-bind="designer.jobtitle"></span>
+        			<span class="notice" ng-click="">须知</span>
+        		</div>
+        		<div class="middle">
+        			<span>服务时间：<span ng-bind="serviceTime"></span></span>
+        		</div>
+        		<div class="bottom">
+        			<span>服务店面：<span ng-bind="designer.store.name"></span></span>
+        		</div>
+        	</div>
+        </div>
+        <div class="items-info">
+        	<div class="items-name">
+        		<span>服务项目：</span>
+        		<span class="name">
+        			<span class="name-item" ng-repeat="item in serviceList" ng-bind="item.name"></span>
+        		</span>
+        	</div>
+        	<div class="time">
+        		<span class="time-item" ng-repeat="item in serviceList" ng-bind="item.serviceTime"></span>
+        	</div>
+        </div>
+        <div class="confirm-container">
+        	<span class="confirm-btn" ng-click="confirmOrder()">确认下单</span>
+        </div> -->
+    </div>
+    <div class="tstext" ng-show="boxtextshow">请选择预约时间</div>
+    <div class="confirm-btn" ng-click="confirmOrder()">
+        确认下单
+    </div>
+</div>
+
+<div class="fixedselecttime" ng-show="fixedtimediv">
+    <div class="fixedselectcontain">
+        <div id="datetime-container">
+            <div class="selecttime-title-bar">
+                <span class="selecttime-left" ng-click="hidfixedtimediv()">
+                    取消
+                </span>
+                <span class="selecttime-center">请选择服务时间</span>
+                <span class="selecttime-right">
+                    <span ng-click="confirm()">确定</span>
+                </span>
+            </div>
+            <div class="swiper-container" id="select-date-container" date-select>
+                <div class="swiper-wrapper">
+                    <div ng-repeat="time in timeArr" on-time-finished ng-click="selectDate(time)" ng-class="{'swiper-slide':true,'item':true,'selected':time.selected}">
+                        <span ng-bind="time.week"></span>
+                        <span ng-bind="time.date"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="select-time-container">
+                <div ng-repeat="status in appointStatusArr" ng-click="selectTime(status)" ng-class="{'item':true,'useful':status.useful,'unuseful':!status.useful,'beselect':status.selected}">
+                    <span ng-bind="status.time"></span>
+                    <span ng-bind="status.status" ng-if="!status.selected"></span>
+                    <span ng-if="status.selected">当前预约</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

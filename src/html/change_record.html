@@ -1,0 +1,25 @@
+<!-- 悦币商城兑换记录 -->
+<div id="change-record-container">
+    <div class="title-bar">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <span>兑换记录</span>
+    </div>
+    <div ng-if="noRecord" id="no-record-container">
+    	<img src="../../assets/images/box.png" class="box">
+    	<div>
+    		陛下还没有兑换过任何商品，<span class="change-text" ng-click="toChange()">立即兑换</span>
+    	</div>
+    </div>
+    <div ng-if="!noRecord" id="record-list-container">
+        <div class="item" ng-repeat="item in recordList" ng-click="recordDetail(item)">
+            <div class="goods-info">
+                <img ng-src="{{item.imgurl}}" class="goods-pic">
+                <div class="goods-state">
+                    <span ng-bind="item.name"></span>
+                    <span ng-bind="item.state" class="state"></span>
+                </div>
+            </div>
+            <img src="../../assets/images/arrow_grey.png" class="common-icon">
+        </div>
+    </div>
+</div>

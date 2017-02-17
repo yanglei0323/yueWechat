@@ -1,0 +1,284 @@
+@import "display";
+.box-shadow (@x: 0px, @y: 3px, @blur: 5px, @alpha: 0.5) {
+	-webkit-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+	-moz-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+	box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+}
+.appointoder-container{
+    background-color: #ececec;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    .appointoder-userinfo{
+    	width:100%;
+    	height:1.76rem;
+    	background:#fff;
+    	position:relative;
+    	margin:0.4rem auto 0.13rem;
+    	padding-left:0.4rem;
+    	.orderteacher{
+    		line-height:1.76rem;
+    		font-size:0.37rem;
+    		color:#333;
+    	}
+    	.userheaderimg{
+    		position:absolute;
+    		left:2.35rem;
+    		top:0.29rem;
+    		overflow:hidden;
+    		border-radius:50%;
+    		width:1.17rem;
+    		height:1.17rem;
+    		img{
+    			width:1.17rem;
+    			height:1.17rem;
+    		}
+    	}
+    	.username{
+    		position:absolute;
+    		left:3.79rem;
+    		top:0.27rem;
+    		overflow:hidden;
+    		font-size:0.32rem;
+    		color:#333;
+    		line-height:0.59rem;
+    	}
+    }
+    .appointoder-odertime{
+    	width:100%;
+    	height:1.17rem;
+    	background:#fff;
+    	position:relative;
+    	margin:0 auto 0.13rem;
+    	padding-left:0.4rem;
+    	.ordertime{
+    		line-height:1.17rem;
+    		font-size:0.37rem;
+    		color:#333;
+    	}
+    	.order-time{
+    		line-height:1.17rem;
+    		margin:0 auto;
+    		font-size:0.32rem;
+    		color:#999;
+    		position:absolute;
+    		left:3.79rem;
+    		top:0rem;
+    		overflow:hidden;
+    	}
+    	.timeimg{
+    		position:absolute;
+    		right:0.67rem;
+    		top:0.29rem;
+    		overflow:hidden;
+    		width:0.59rem;
+    		height:0.59rem;
+    	}
+    }
+    .appointoder-oderstore{
+    	width:100%;
+    	height:1.17rem;
+    	background:#fff;
+    	position:relative;
+    	margin:0 auto 0.13rem;
+    	padding-left:0.4rem;
+    	.orderstore{
+    		line-height:1.17rem;
+    		font-size:0.37rem;
+    		color:#333;
+    	}
+    	.order-time{
+    		line-height:1.17rem;
+    		margin:0 auto;
+    		font-size:0.32rem;
+    		color:#999;
+    		position:absolute;
+    		left:3.79rem;
+    		top:0rem;
+    		overflow:hidden;
+    	}
+    	.locationimg{
+		    position: absolute;
+            right: .88rem;
+            top: .425rem;
+            overflow: hidden;
+            width: .22rem;
+            height: .32rem;
+    	}
+    }
+    .appointoder-orderservice{
+    	width:100%;
+    	background:#fff;
+    	position:relative;
+    	margin:0 auto 0.13rem;
+    	padding-left:0.4rem;
+    	.orderservice{
+    		line-height:1.23rem;
+    		font-size:0.37rem;
+    		color:#333;
+    		display:inline-block;
+    		float:left;
+    	}
+    	.servicename{
+		    line-height:0.59rem;
+		    color:#999;
+		    font-size:0.32rem;
+		    padding:0.29rem 0.75rem;
+		    display:inline-block;
+		    min-height:1.23rem;
+    	}
+    	.servicenametime{
+		    line-height:0.59rem;
+		    color:#999;
+		    font-size:0.32rem;
+		    float:right;
+		    padding:0.29rem 0.4rem 0.29rem 0;
+    	}
+    	.name-item,.time-item{
+    		display:block;
+    	}
+    }
+    .tstext{
+    	width:4.27rem;
+    	height:1.17rem;
+    	background:#fff;
+    	border-radius:0.27rem;
+    	font-size:0.37rem;
+    	color:#333;
+    	line-height:1.17rem;
+    	text-align:center;
+    	margin:2.67rem auto;
+	  	.box-shadow(2px, 2px, 20px, 0.5);
+    }
+    .confirm-btn{
+    	width:80%;
+    	height:1.17rem;
+    	background:#c0a97a;
+    	color:#fff;
+    	font-size:0.37rem;
+    	line-height:1.17rem;
+    	text-align:center;
+    	position:fixed;
+    	left:1rem;
+    	bottom:1.33rem;
+    	border-radius:0.13rem;
+    }
+}
+
+
+
+
+
+.fixedselecttime{
+	width:100%;
+	height:100vh;
+	background:rgba(0,0,0,0.5);
+	position:fixed;
+	left:0;
+	top:0;
+	.fixedselectcontain{
+		width:100%;
+    	position:fixed;
+    	left:0;
+    	bottom:0.67rem;
+	}
+}
+#datetime-container {
+	position:relative;
+	background-color: #ffffff;
+	#confirm-btn {
+		font-size: 0.32rem;
+		color:#c0a97a;
+	}
+	.selecttime-title-bar{
+		width:100%;
+		height:1.17rem;
+		background:#fff;
+		font-size:0.37rem;
+		color:#333;
+		text-align:center;
+		line-height:1.17rem;
+		border-bottom:2px solid #ececec;
+		.selecttime-left{
+			color:#999;
+			position:absolute;
+			top:0;
+			left:0.4rem;
+		}
+		.selecttime-center{
+			width:100%;
+		}
+		.selecttime-right{
+			color:#c0a97a;
+			position:absolute;
+			top:0;
+			right:0.4rem;
+		}
+	}
+	#select-date-container {
+		height: 1.2rem;
+		background: #fff;
+		font-size:0.32rem;
+		.item {
+			width: 1.4rem;
+			height: 1.2rem;
+			.flex-column;
+			align-items: center;
+			justify-content: center;
+			color: #333;
+		}
+		.selected {
+			color: #c0a97a;
+		}
+	}
+	#select-time-container {
+	background:#f0f0f0;
+		padding: 0.13rem 0 0 0;
+		width: 100%;
+		.flex;
+		flex-wrap: wrap;
+		.item {
+			width: 2.33rem;
+			height: 1.17rem;
+			margin-left: 0.13rem;
+			margin-bottom: 0.13rem;
+			.flex-column;
+			align-items: center;
+			justify-content: center;
+			font-size: 0.32rem;
+			position: relative;
+			background:#fff;
+			border-radius:0.07rem;
+			color:#c0a97a;
+			.selected-icon {
+				width: 0.32rem;
+				height: 0.32rem;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+			
+		}
+		.useful {
+
+		}
+		.unuseful {
+			background-color: #999;
+			color: #fff;
+		}
+		.beselect{
+			background:#c0a97a;
+			color:#fff;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+

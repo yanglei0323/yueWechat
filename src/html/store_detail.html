@@ -1,0 +1,155 @@
+<div class="parent-container">
+    <div id="store-detail-container">
+        <div class="title-bar">
+            <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+            <span ng-bind="store.name"></span>
+            <span class="title-bar-right jmbicon">
+                <!-- <img src="../../assets/images/collect.png" alt="收藏" class="common-icon"> -->
+                
+                <!-- <img src="../../assets/images/share.png" class="common-icon share-icon"> -->
+                <img src="../../assets/images/image_47@2x.png" alt="价目表" class="common-icon" ng-click="showPrice($event)">
+            </span>
+        </div>
+        <div class="store-detail">
+            <div advertise class="swiper-container store-pics-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" ng-repeat="item in store.imgurl" on-finish-render-filters>
+                        <img ng-src="http://photo.yueyishujia.com:8112{{item}}">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div id="store-intro">
+                <div class="clearfix">
+                    <span ng-bind="store.name"></span>
+                    <!-- <img ng-repeat="star in store.starUrl" ng-src="{{star.path}}" class="star-icon"> -->
+                    <span class="pull-right price-table-btn">
+                        <img src="../../assets/images/shoucang-3.png" ng-if="!store.iskeep" alt="价目表" class="glyphicon glyphicon-star-empty storeximg" ng-click="keepStore(store)">
+                        <img src="../../assets/images/sc-5.png" ng-if="store.iskeep" alt="价目表" class="glyphicon glyphicon-star-empty storeximg" ng-click="keepStore(store)">
+                        <!-- <span class="glyphicon glyphicon-star-empty" ng-if="!store.iskeep" ng-click="keepStore(store)"></span>
+                        <span class="glyphicon glyphicon-star keep-store" ng-if="store.iskeep" ng-click="keepStore(store)"></span> -->
+                    </span>
+                </div>
+                <div class="storeinfodiv">
+                    <div class="time">
+                        营业时间
+                    </div>
+                    <div class="store-info">
+                    	<div ng-bind="store.info" class="storetext"></div>
+                    	<div>营业时间：<span ng-bind="store.begintime"></span>-<span ng-bind="store.endtime"></span></div>
+                    	<div>预约：APP上选择心仪发型师一键预约到店不用等</div>
+                    	<div>提供：WIFE,小吃,VIP室,停车</div>
+                    </div>
+                    <!-- <div class="other-info">
+                        <span class="">预约数：<span class="text-highlight" ng-bind="store.reservenum"></span>/次</span>
+                        <span>均价：<span class="text-highlight" ng-bind="store.average"></span>/元</span>
+                    </div> -->
+                    <div class="location">
+                        <span class="flex">
+                            <img src="../../assets/images/location.png" class="location-icon">
+                            <span ng-bind="store.location" ng-click="toMap()"></span>
+                        </span>
+                        <a ng-href="tel:{{store.telephone}}" class="gdicon">
+                            <img src="../../assets/images/dh@2x.png" class="phone-icon" name="phone-icon">
+                        </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            <!-- <div id="store-activity">
+                <div class="text-highlight title">
+                    <span>店内活动</span>
+                    <span class="en-title">In store activities</span>
+                </div>
+                <div activity class="swiper-container store-activity-pics">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" ng-repeat="activity in activityList" on-activity-finished>
+                            <img ng-src="{{activity.imgurl}}" ng-click="jumpToActivity(activity)">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div> -->
+            <div class="designertitle">优秀发型师</div>
+            <div class="list-container" ng-if="!isList">
+                <div infinite-scroll="getDesignerInfo()" infinite-scroll-disabled="loading" infinite-scroll-distance="0">
+                    <div class="list-item newdesinfo" ng-repeat="designer in designerList">
+                        <div class="newdesinfo-1" ng-click="toDetail(designer)">
+                            <div><img ng-src="{{designer.avatar}}"></div>
+                            <span ng-bind="designer.name"></span>
+                        </div>
+                        <div class="newdesinfo-2" ng-click="toDetail(designer)">
+                            <span ng-bind="designer.jobtitle"></span><span class="newColor">&nbsp;|&nbsp;接单<span ng-bind="designer.ordernum"></span>次</span><br>
+                            <span class="star">
+                                <img ng-repeat="star in designer.starUrl" ng-src="{{star.path}}">
+                            </span><br />
+                            <span class="intro"><span ng-bind="designer.simpleinfo"></span></span>
+                        </div>
+                        <div class="newdesinfo-3" ng-click="toDetail(designer)">
+                            剪发<span>￥<span ng-bind="designer.cutmoney"></span>元</span>
+                        </div>
+                        <div class="newdesinfo-4">
+                            <img ng-click="changebig(designer,0)" ng-src="http://photo.yueyishujia.com:8112{{designer.workimg1}}" src="" alt="暂无图片">
+                            <img ng-click="changebig(designer,1)" ng-src="http://photo.yueyishujia.com:8112{{designer.workimg2}}" src="" alt="暂无图片">
+                            <img ng-click="changebig(designer,2)" ng-src="http://photo.yueyishujia.com:8112{{designer.workimg3}}" src="" alt="暂无图片">
+                        </div>
+                        <div class="newdesinfo-5" ng-click="toDetail(designer)">
+                            <span>
+                                <span><img src="../../assets/images/location.png"></span>
+                                <span ng-bind="designer.store.name"></span>
+                            </span>
+                        </div>
+                        <div class="newdesinfo-6" ng-click="toDetail(designer)">
+                            <span>
+                                <!-- <span class="consult"><img src="../../assets/images/consult.png"></span> -->
+                                <span class="appoint">立即预约</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="load" ng-hide="loaded">
+                        <img src="../../assets/images/loading2.gif" class="common-icon">
+                        正在加载...
+                    </div>
+                    <div ng-show="loaded" class="load"></i>没有更多内容</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="option" ng-if="showMask" name="mask" ng-click="hideMask()">
+    <div class="price-container" ng-click="forbidHide($event)">
+        <img ng-src="{{store.priceimgurl}}">
+        <img src="../../assets/images/cancel.png" class="cancel common-icon" ng-click="hideMask()">
+        <!-- <img ng-src="{{activity.imgurl}}"> -->
+    </div>
+</div>
+
+<div class="priceDiv" ng-if="showMask1">
+    <div class="pricerelat">
+        <div class="title-bar">
+            <span class="title-bar-left">
+                <span class="title-bar-left" ng-click="hideMask1()"><img src="../../assets/images/back.png"></span>
+            </span>
+            <span class="titletext">价格表</span>
+        </div>
+        <div class="pricedivcontent" ng-click="forbidHide($event)">
+            <img ng-src="{{store.priceimgurl}}">
+            <!-- <img ng-src="{{activity.imgurl}}"> -->
+        </div>
+    </div>
+</div>
+<div common-swiper class="swiper-container slider-container content changesize swiper-container-id" ng-show="nowweight" ng-click="hiddenchange()">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide newpic-item">
+            <img ng-src="http://photo.yueyishujia.com:8112{{newpiclist.workimg1}}">
+        </div>
+        <div class="swiper-slide newpic-item">
+            <img ng-src="http://photo.yueyishujia.com:8112{{newpiclist.workimg2}}">
+        </div>
+        <div class="swiper-slide newpic-item">
+            <img ng-src="http://photo.yueyishujia.com:8112{{newpiclist.workimg3}}">
+        </div>
+    </div>
+    <div class="pictext"></div>
+</div>

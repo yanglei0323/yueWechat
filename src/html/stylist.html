@@ -1,0 +1,368 @@
+<!-- 发型师 -->
+<div class="title-bar">
+    <!-- <span class="title-bar-left">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+    </span> -->
+    <span class="titletext">造型师</span>
+    <span class="title-bar-right">
+        <!-- <img src="../../assets/images/search.png" alt="搜索" id="search" ng-click="searchDesigner()"> -->
+        <img src="../../assets/images/image_47@2x.png" alt="价目表" id="newjiamb" ng-click="showPrice($event)">
+    </span>
+</div>
+<div id="stylist">
+	<div class="top-nav">
+		<span ng-class="{'nav-item':true,'selected':showStore}" ng-click="getStoreInfo()">
+			<span ng-bind="selectStoreName"></span>
+			<img src="../../assets/images/cmdx.png" class="icon cmdimg" ng-show="!showStore">
+			<img src="../../assets/images/cmds.png" class="icon cmdimg" ng-show="showStore">
+			<ul class="city-item-container" ng-show="showStore">
+				<!-- <li class="city-item">
+					<span ng-class="{'item-text':true,'text-highlight':selectAllArea}" ng-click="selectCity('all', $event)">全部<span class="cityselecttrue"><img src="../../assets/images/selecttrue.png" alt="" ng-show="selectAllArea"></span></span>
+				</li> -->
+				<li class="city-item">
+					<span ng-class="{'item-text':true,'text-highlight':selectAll}" ng-click="selectStore('all', $event,true)">全部</span><span class="cityselecttrue1"><img src="../../assets/images/selecttrue.png" alt="" ng-show="selectAll"></span>
+				</li>
+				<li class="city-item" ng-repeat="area in areaList">
+					<span ng-bind="area.name" ng-class="{'item-text':true,'text-highlight':area.selected}" ng-click="selectStore(area, $event)"></span><span class="cityselecttrue1"><img src="../../assets/images/selecttrue.png" alt="" ng-show="area.selected"></span>
+				</li>
+			</ul>
+		</span>
+		<span ng-class="{'nav-item':true,'selected':filterShow}" ng-click="showFilterItems()">
+			<span ng-bind="sortType"></span>
+			<img src="../../assets/images/cmdx.png" class="icon cmdimg" ng-show="!filterShow">
+			<img src="../../assets/images/cmds.png" class="icon cmdimg" ng-show="filterShow">
+			<ul class="filter-container" ng-show="filterShow">
+				<li class="filter-item">
+					<span ng-class="{'item-text':true,'text-highlight':filterMostReserve}" ng-click="filter('mostordernum', $event, '订单最多')">订单最多<span class="selsecttrue"><img src="../../assets/images/selecttrue.png" alt="" ng-show="filterMostReserve"></span></span>
+				</li>
+				<li class="filter-item">
+					<span ng-class="{'item-text':true,'text-highlight':filterHighestScore}" ng-click="filter('mostcommentnum', $event, '评论最多')">评论最多<span class="selsecttrue"><img src="../../assets/images/selecttrue.png" alt="" ng-show="filterHighestScore"></span></span>
+				</li>
+				<li class="filter-item">
+					<span ng-class="{'item-text':true,'text-highlight':filterNearest}" ng-click="filter('nearest', $event, '距离最近')">距离最近<span class="selsecttrue"><img src="../../assets/images/selecttrue.png" alt="" ng-show="filterNearest"></span></span>
+				</li>
+			</ul>
+		</span>
+
+		<!-- 标签页列表 -->
+		<span ng-class="{'nav-item':true,'selected':showLabel}" ng-show="jfshow">
+			<span ng-click="fancylabel()">筛选</span>
+			<img src="../../assets/images/shaixuanmeixuan@2x.png" class="icon" ng-show="!showLabel" ng-click="fancylabel()">
+			<img src="../../assets/images/shaixuan@2x.png" class="icon" ng-show="showLabel" ng-click="fancylabel()">
+			<div class="laber-item-container" ng-show="showLabel">
+				<ul>
+					<span class="laber-title">剪发价格</span>
+					<li class="laber-item" ng-repeat="pric in priceList" ng-class="{'bg-highlight':pric.selected}" ng-click="selectprice(pric, $event)">
+						<span ng-bind="pric.name" ng-class="{'item-text':true}"></span>
+					</li>
+				</ul>
+				<ul>
+					<span class="laber-title">口味</span>
+					<li class="laber-item" ng-repeat="sex in sexList" ng-class="{'bg-highlight':sex.selected}" ng-click="selectsex(sex, $event)">
+						<span ng-bind="sex.name" ng-class="{'item-text':true}"></span>
+					</li>
+				</ul>
+				<ul>
+					<span class="laber-title">发型师标签</span>
+					<li class="laber-item" ng-repeat="fclabel in labelList" ng-class="{'bg-highlight':fclabel.selected}" ng-click="selectfclabel(fclabel, $event)">
+						<span ng-bind="fclabel.name" ng-class="{'item-text':true}"></span>
+					</li>
+					<li class="dxtext">可多选</li>
+				</ul>
+				<ul>
+					<span class="laber-title">擅长项目</span>
+					<li class="laber-item" ng-repeat="skill in skillList" ng-class="{'bg-highlight':skill.selected}" ng-click="selectskill(skill, $event)">
+						<span ng-bind="skill.name" ng-class="{'item-text':true}"></span>
+					</li>
+					<li class="dxtext">可多选</li>
+				</ul>
+				<ul>
+					<li class="maketrue"><span class="mktrue" ng-click="filtermaktrue()">确定</span></li>
+					<li class="reset" ng-click="resetlabel()">重置选项</li>
+				</ul>
+			</div>
+		</span>
+		<!-- <span ng-class="{'nav-item':true,'selected':isShowSort}" ng-click="showSort()">
+			<span ng-bind="selfFilterName"></span>
+			<img src="../../assets/images/updown1.png" class="icon" ng-show="!isShowSort">
+			<img src="../../assets/images/updown1_h.png" class="icon" ng-show="isShowSort">
+		</span> -->
+	</div>
+	<div class="grid-container" ng-if="isList">
+		<div infinite-scroll="getDesignerInfo()" infinite-scroll-disabled="loading" infinite-scroll-distance="0">
+			<div class="item-container">
+				<div class="item" ng-repeat="designer in designerList" ng-click="toDetail(designer)">
+					<img ng-src="{{designer.imgurl}}">
+					<div class="info">
+						<span ng-bind="designer.name" class="name"></span>
+						<div class="bottom-info">
+							<span ng-bind="designer.store.name"></span>
+							<span>
+								<span ng-bind="designer.ordernum"></span> 单
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="load" ng-hide="loaded">
+				<img src="../../assets/images/loading2.gif" class="common-icon">
+				正在加载...
+			</div>
+            <div ng-show="loaded" class="load"></i>没有更多内容</div>
+		</div>
+	</div>
+	<!-- <div class="list-container" ng-if="!isList">
+		<div infinite-scroll="getDesignerInfo()" infinite-scroll-disabled="loading" infinite-scroll-distance="0">
+			<div class="list-item" ng-repeat="designer in designerList" ng-click="toDetail(designer)">
+				<div class="content">
+					<span class="headpic">
+						<img ng-src="{{designer.avatar}}">
+						<span ng-bind="designer.name"></span>
+					</span>
+					<span class="info">
+						<span class="first-row">
+							<span class="left">
+								<span ng-bind="designer.jobtitle"></span>|接单<span ng-bind="designer.ordernum"></span>次
+							</span>
+							<span class="right">剪发：<span class="right-tcolor">￥<span ng-bind="designer.cutmoney"></span></span></span>
+						</span>
+						<span class="star">
+							<img ng-repeat="star in designer.starUrl" ng-src="{{star.path}}">
+						</span>
+						<span class="intro">擅长：<span ng-bind="designer.info"></span></span>
+					</span>
+
+				</div>
+				<div class="location">
+					<span class="left">
+						<span><img src="../../assets/images/location.png"></span>
+						<span ng-bind="designer.store.location"></span>
+					</span>
+					<span class="right">
+						<span class="appoint">立即预约</span>
+					</span>
+				</div>
+			</div>
+			<div class="load" ng-hide="loaded">
+				<img src="../../assets/images/loading2.gif" class="common-icon">
+				正在加载...
+			</div>
+            <div ng-show="loaded" class="load"></i>没有更多内容</div>
+		</div>
+	</div> -->
+	<div class="list-container" ng-if="!isList">
+		<div infinite-scroll="getDesignerInfo()" infinite-scroll-disabled="loading" infinite-scroll-distance="0">
+			<div class="list-item newdesinfo" ng-repeat="designer in designerList">
+				<div class="newdesinfo-1" ng-click="toDetail(designer)">
+					<div><img ng-src="{{designer.avatar}}"></div>
+					<span ng-bind="designer.name"></span>
+				</div>
+				<div class="newdesinfo-2" ng-click="toDetail(designer)">
+					<span ng-bind="designer.jobtitle"></span><span class="newColor">&nbsp;|&nbsp;接单<span ng-bind="designer.ordernum"></span>次</span><br>
+					<span class="star">
+						<img ng-repeat="star in designer.starUrl" ng-src="{{star.path}}">
+					</span><br />
+					<span class="intro"><span ng-bind="designer.simpleinfo"></span></span>
+				</div>
+				<div class="newdesinfo-3" ng-click="toDetail(designer)" ng-show="jfshow">
+					剪发<span>￥<span ng-bind="designer.cutmoney"></span>元</span>
+				</div>
+				<div class="newdesinfo-4">
+					<img ng-click="changebig(designer,0)" ng-src="http://photo.yueyishujia.com:8112{{designer.workimg1}}" src="" alt="暂无图片">
+					<img ng-click="changebig(designer,1)" ng-src="http://photo.yueyishujia.com:8112{{designer.workimg2}}" src="" alt="暂无图片">
+					<img ng-click="changebig(designer,2)" ng-src="http://photo.yueyishujia.com:8112{{designer.workimg3}}" src="" alt="暂无图片">
+					
+				</div>
+				<div class="newdesinfo-5" ng-click="toDetail(designer)">
+					<span>
+						<span><img src="../../assets/images/location.png"></span>
+						<span ng-bind="designer.store.name"></span>
+					</span>
+				</div>
+				<div class="newdesinfo-6" ng-click="toDetail(designer)">
+					<span>
+						<!-- <span class="consult"><img src="../../assets/images/consult.png"></span> -->
+						<span class="appoint">立即预约</span>
+					</span>
+				</div>
+			</div>
+			<div class="load" ng-hide="loaded">
+				<img src="../../assets/images/loading2.gif" class="common-icon">
+				正在加载...
+			</div>
+            <div ng-show="loaded" class="load"></i>没有更多内容</div>
+		</div>
+	</div>
+
+
+
+</div>
+<!-- <div class="bottom-nav">
+    <span class="item" ng-click="navigate(1)">
+        <span>
+            <img src="../../assets/images/shouye.png">
+        </span>      
+        <span class="text">首页</span>
+    </span>
+    <span class="item" ng-click="navigate(2)">
+        <span>
+            <img src="../../assets/images/faxingshi_h.png">
+        </span>
+        <span class="text highlight">消息</span>
+    </span>
+    <span class="item" ng-click="navigate(3)">
+        <span>
+            <img src="../../assets/images/yuyue.png">
+        </span>
+        <span class="text">买单</span>
+    </span>
+    <span class="item" ng-click="navigate(4)">
+        <span>
+            <img src="../../assets/images/dingdan.png">
+        </span>
+        <span class="text">悦购</span>   
+    </span>
+    <span class="item" ng-click="navigate(5)">
+        <span>
+            <img src="../../assets/images/me.png">
+        </span>
+        <span class="text">我的</span>
+    </span>
+</div> -->
+<div class="designer-mask" ng-show="showMask" forbid-scroll>
+	<div class="sort-container" ng-show="isShowSort">
+		<div class="type-container">
+			<div class="title">
+				门店类型
+			</div>
+			<div>
+				<span ng-class="{'item':true,'selected':isDirectSale}" ng-click="selectStoreType(1)">直营店</span>
+				<span ng-class="{'item':true,'selected':isCooperate}" ng-click="selectStoreType(2)">合作店</span>
+			</div>
+		</div>
+		<div class="type-container">
+			<div class="title">
+				优惠活动
+			</div>
+			<div>
+				<span ng-repeat="activity in couponActivity" ng-class="{'item':true,'selected':activity.selected}" ng-bind="activity.name"
+				 ng-click="selectCouponActivity(activity)"></span>
+			</div>
+		</div>
+		<div class="type-container border-bottom-none">
+			<div class="title">
+				新用户专享
+			</div>
+			<div>
+				<span ng-repeat="activity in newUserActivity" ng-class="{'item':true,'selected':activity.selected}" ng-bind="activity.name"
+				 ng-click="selectNewUserActivity(activity)"></span>
+			</div>
+		</div>
+		<div class="clearfix">
+			<span class="confirm-btn pull-right" ng-click="selfFilter()">确定</span>
+		</div>
+	</div>
+</div>
+<!-- 底部悬浮窗 -->
+<div class="fixeddesigninfo">
+	<span>
+		<div class="fixedinfobg"></div>
+		<div class="fixedinfo-1" ng-click="toNewDetail(designerinfo)">
+			<img ng-src="http://photo.yueyishujia.com:8112{{designerinfo.avatar}}" alt=""><span ng-bind="designerinfo.name"></span>
+		</div>
+		<div class="fixedinfo-2" ng-click="toNewDetail(designerinfo)">
+			<span ng-bind="dewaitinfo.info"></span>
+		</div>
+		<div class="fixedinfo-3" ng-click="tohiddenDetail()"><img src="../../assets/images/close.png" alt=""></div>
+	</span>
+</div>
+<div class="priceDiv" ng-if="showMask1">
+	<div class="pricerelat">
+		<div class="title-bar">
+		    <span class="title-bar-left">
+		        <span class="title-bar-left" ng-click="hideMask()"><img src="../../assets/images/back.png"></span>
+		    </span>
+		    <span class="titletext"ng-bind="pricepage.name"></span>
+		</div>
+	    <div class="pricedivcontent" ng-click="forbidHide($event)">
+	        <img ng-src="http://photo.yueyishujia.com:8112{{pricepage.imgurl}}">
+	        <!-- <img ng-src="{{activity.imgurl}}"> -->
+	    </div>
+		
+	</div>
+</div>
+<!-- 标签弹窗 -->
+<div class="labelpopup" ng-show="labelpopupdiv">
+	<div class="popupclose" ng-click="hidlabelpopupdiv()"><img src="../../assets/images/close.png" alt=""></div>
+	<div class="popupline"></div>
+	<div class="labelpopup-contain">
+		<div class="labelpopup-title">启奏陛下</div>
+		<div class="labelpopup-des">若想弹指间获得推荐，选择必然重要</div>
+		<div class="labelpopup-containdiv">
+			<ul>
+				<span class="containdiv-title">剪发价格</span>
+				<li class="containdiv-item" ng-repeat="pric in priceList" ng-class="{'labelbg-highlight':pric.selected}" ng-click="selectprice(pric, $event)">
+					<span ng-bind="pric.name" ng-class="{'item-text':true}"></span>
+				</li>
+			</ul>
+			<ul>
+				<span class="containdiv-title">口味</span>
+				<li class="containdiv-item" ng-repeat="sex in sexList" ng-class="{'labelbg-highlight':sex.selected}" ng-click="selectsex(sex, $event)">
+					<span ng-bind="sex.name" ng-class="{'item-text':true}"></span>
+				</li>
+			</ul>
+			<ul>
+				<span class="containdiv-title2">发型师标签</span><span class="containdiv-text">可多选</span>
+				<li class="containdiv-item" ng-repeat="fclabel in labelList" ng-class="{'labelbg-highlight':fclabel.selected}" ng-click="selectfclabel(fclabel, $event)">
+					<span ng-bind="fclabel.name" ng-class="{'item-text':true}"></span>
+				</li>
+			</ul>
+			<br>
+			<ul>
+				<span class="containdiv-title2">擅长项目</span><span class="containdiv-text">可多选</span>
+				<li class="containdiv-item" ng-repeat="skill in skillList" ng-class="{'labelbg-highlight':skill.selected}" ng-click="selectskill(skill, $event)">
+					<span ng-bind="skill.name" ng-class="{'item-text':true}"></span>
+				</li>
+			</ul>
+			<br>
+			<ul>
+				<span class="containdiv-title" ng-show="callshow">饮品喜好</span>
+				<li class="containdiv-item" ng-repeat="drink in drinkList" ng-class="{'labelbg-highlight':drink.selected}" ng-click="selectdrink(drink, $event)">
+					<span ng-bind="drink.name" ng-class="{'item-text':true}"></span>
+				</li>
+			</ul>
+			<br>
+			<ul>
+				<span class="containdiv-title" ng-show="drinkshow">希望别人称呼你</span>
+				<li class="containdiv-item" ng-repeat="call in callList" ng-class="{'labelbg-highlight':call.selected}" ng-click="selectcall(call, $event)">
+					<span ng-bind="call.name" ng-class="{'item-text':true}"></span>
+				</li>
+			</ul>
+			<br>
+		</div>
+		<div class="labelpopup-bottom">
+			<div class="xgg" ng-click="hidlabelpopupdiv()">先逛逛</div>
+			<div class="labelmktrue" ng-click="maktrue()">确定</div>
+		</div>
+		<div class="label-bottom-line"></div>
+	</div>
+</div>
+<!-- <div class="changesize" ng-show="nowweight" ng-click="hiddenchange()">
+	<img src="" alt="">
+</div> -->
+<div common-swiper class="swiper-container slider-container content changesize" ng-show="nowweight" ng-click="hiddenchange()">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide newpic-item">
+            <img ng-src="http://photo.yueyishujia.com:8112{{newpiclist.workimg1}}">
+        </div>
+        <div class="swiper-slide newpic-item">
+            <img ng-src="http://photo.yueyishujia.com:8112{{newpiclist.workimg2}}">
+        </div>
+        <div class="swiper-slide newpic-item">
+            <img ng-src="http://photo.yueyishujia.com:8112{{newpiclist.workimg3}}">
+        </div>
+    </div>
+
+    <div class="pictext"></div>
+
+</div>

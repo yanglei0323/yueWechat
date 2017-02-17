@@ -1,0 +1,83 @@
+@import "display";
+#get-invitation-container {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: url("../../assets/images/get_invitation_bg.png") no-repeat;
+	background-size: 100%;
+	.get-invitation {
+		.flex-column;
+		-moz-align-items:center;
+		-ms-align-items:center;
+		-o-align-items:center;
+		align-items:center;
+		-webkit-align-items:center;
+		-moz-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		-o-flex-wrap: wrap;
+		flex-wrap:wrap;
+		-webkit-flex-wrap: wrap;
+		-webkit-box-orient: vertical;
+		box-orient: vertical;
+		.coin-num {
+			position: relative;
+			height: 4.666667rem;
+			width: 9.333333rem;
+			background: url("../../assets/images/coin_num_bg.png") no-repeat;
+			background-size: 100% 100%;
+			margin:0.4rem auto 0;
+			.mall-name-text {
+				color: #333333;
+				font-size: 0.4rem;
+				text-align: center;
+				margin-top: 1.0rem;
+			}
+			.coin-num-text {
+				font-size: 0.64rem;
+				color: #d1b984;
+				margin-top: 0.8rem;
+
+			}
+			.tips {
+				color: #999999;
+				font-size: 0.32rem;
+				margin-top: 0.64rem;
+				bottom: 0.266667rem;
+			}
+		}
+		.success-info {
+			font-size: 0.4rem;
+			color: #fff;
+			text-align: center;
+			margin:2.4rem auto 0;
+			.phone-text {
+				color: #d1b984;
+			}
+		}
+		.phone-container {
+			height: 1.2rem;
+			width: 8.0rem;
+			margin:3.333333rem auto 0;
+			.flex-center;
+			background-color: #ffffff;
+			border-radius: 0.133333rem;
+			input[type="text"] {
+				font-size: 0.426667rem;
+				text-align: center;
+			}
+		}
+		#get-btn {
+			height: 1.2rem;
+			width: 8.0rem;
+			text-align: center;
+			line-height: 1.2rem;
+			color: #ffffff;
+			margin-top: 0.64rem;
+			background-color: #d1b984;
+			font-size: 0.4rem;
+			border-radius: 0.133333rem;
+			margin:0.64rem auto 0;
+		}
+	}
+
+}

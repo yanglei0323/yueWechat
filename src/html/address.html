@@ -1,0 +1,26 @@
+<div class="title-bar">
+    <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+    <span>收货地址</span>
+</div>
+<div id="address-container">
+    <div class="addr-item" ng-repeat="addr in addrList" ng-click="backToOrder(addr)">
+        <span class="cell default-site" ng-if="addr.selectedSite">
+            <img src="../../assets/images/xzfxs@2x.png" alt="选中地址地址">
+        </span>
+        <span class="cell info">
+            <span class="name" ng-bind="addr.name"></span>
+            <span class="phone" ng-bind="addr.telephone"></span>
+            <span class="address">
+                <span class="default-site-tips" ng-if="addr.defaultflag == 1">默认</span>
+                <span ng-bind="addr.city+addr.address"></span>
+            </span>
+        </span>
+        <span class="cell edit" ng-click="toEditAddr($event,addr)">
+            <img src="../../assets/images/edit_2.png" alt="编辑">
+        </span>
+    </div>
+    <div id="add-addr" ng-click="addAddress()">
+        <img src="../../assets/images/add_addr.png" alt="新建地址">
+        新建地址
+    </div>
+</div>

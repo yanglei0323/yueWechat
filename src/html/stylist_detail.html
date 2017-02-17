@@ -1,0 +1,157 @@
+<!-- 发型师详情 -->
+<div class="parent-container">
+<div id="stylist-detail">
+<div class="title-bar" id="styletitle-bar">
+    <span class="title-bar-left" ng-click="tback()">
+        <img src="../../assets/images/back-1.png">
+    </span>
+    <!-- <span class="title-bar-right" id="styletitle-right">
+        <img src="../../assets/images/uploadinfo.png">
+    </span> -->
+</div>
+<div class="head">
+	<span><img ng-src="{{designer.avatar}}" class="head-pic"></span>
+	<span class="njobinfo"><span ng-bind="designer.name"></span>|<span ng-bind="designer.jobtitle"></span></span>
+	<span class="intro"><a ng-href="tel:{{designer.telephone}}" ng-bind="designer.telephone"></a></span>
+	<span class="intro" ng-bind="designer.simpleinfo"></span>
+	<span class="operation">
+		<span class="btn-operation" ng-click="designerIntro(designer)">
+			<span>更多介绍</span>
+		</span>
+	</span>
+	<div class="stylist-info">
+		<div class="top-panel">
+			<span class="item borderl">
+				<span>接单：</span>
+				<span>
+					<span ng-bind="designer.ordernum"></span>次
+				</span>
+			</span>
+			<span class="item" id="lrborder">
+				<span id="flextext">评价：</span>
+				<span class="flex-center" ng-click="toDesignerComment(designer)">
+					<img ng-repeat="level in designer.commentLevel" ng-src="{{level.path}}" class="star-icon star-top">
+				</span>
+				<span>(<span ng-bind="designer.commentnum"></span>)条</span>
+			</span>
+			<span class="item borderl">
+				<span><img src="../../assets/images/dingwei1@2x.png" class="newlocationimg"></span>
+				<span class="location" ng-bind="designer.store.name"></span>
+			</span>
+		</div>
+	</div>
+</div>
+<div class="nav-bar newnavbar" ng-click="gopaymd()">
+	<span class="left" id="leftmd">
+		<img src="../../assets/images/msmaidan.png" alt="">
+		<span>马上买单</span>
+	</span>
+	<span class="right" id="rightmd">
+		<img src="../../assets/images/arrow_grey.png" alt="">
+	</span>
+</div>
+<!-- 导航bar -->
+<div class="nav-bar">
+	<span ng-class="{'selected':project}" ng-click="show(1)">服务项目</span>
+	<span ng-class="{'selected':work}" ng-click="show(4)">设计作品</span>
+	<span ng-class="{'selected':life}" ng-click="show(3)">悦享生活</span>
+</div>
+<!-- 发型师项目 -->
+<div class="stylist_proj_container" ng-if="project">
+	<div class="item" ng-repeat="service in serviceList" ng-click="selectService(service)">
+		<span class="left">
+			<span class="select-icon">
+				<img src="../../assets/images/common_unselected.png" class="common-icon" ng-if="!service.selected">
+				<img src="../../assets/images/common_selected.png" class="common-icon" ng-if="service.selected">
+			</span>
+			<span ng-bind="service.name"></span>
+		</span>
+		<span class="right">
+			<span ng-bind="service.serviceTime"></span> min
+		</span>
+	</div>
+	
+	<div class="bottom-operation">
+		<span class="left">
+			<span class="glyphicon praise-icon" ng-if="!designer.iskeep" ng-click="keepDesigner(designer)"><img src="../../assets/images/shoucang@2x.png" alt="" class="shoucangicon"></span>
+			<span class="glyphicon praise-icon praised" ng-if="designer.iskeep" ng-click="keepDesigner(designer)"><img src="../../assets/images/shoucang2@2x.png" alt="" class="shoucangicon"></span>&nbsp;
+			<span class="highlight shoucangtext">收藏</span>
+		</span>
+		<!-- <span class="middle">
+			<span>立即咨询</span>
+		</span> -->
+		<span class="right" ng-click="appoint()">
+			<span>立即预约</span>
+		</span>
+	</div>
+</div>
+<!-- 发型师价格 -->
+<div class="stylist-price-container" ng-if="price">
+	<div class="common-proj" ng-repeat="price in priceList">
+		<span class="title" ng-click="showItems(price)">
+			<span ng-bind="price.title"></span>
+			<img src="../../assets/images/down_big.png" class="common-icon" ng-hide="price.show">
+			<img src="../../assets/images/up.png" class="common-icon" ng-show="price.show">
+		</span>
+		<span class="common-proj-item" ng-repeat="items in price.items" ng-show="price.show">
+			<span ng-bind="items.title" class="item-title"></span>
+			<span class="right">
+				<span class="highlight">￥ <span ng-bind="items.price.actualprice"></span></span>
+				<del class="original-price">￥ <span ng-bind="items.price.originalprice"></span></del>
+			</span>
+		</span>
+	</div>
+</div>
+<!-- 发型师生活 -->
+<div class="stylist-life-container" ng-if="life">
+	<div infinite-scroll="getLife()" infinite-scroll-disabled="lifeLoading" infinite-scroll-distance="1">
+		<div class="item" ng-repeat="life in lifeList">
+			<div class="time">
+				<span ng-bind="life.time"></span>
+			</div>
+			<div ng-class="{'content':true,'padding-bottom-none':life.imgLength==0}">
+				<div ng-bind="life.content" class="lifecontent"></div>
+				<div class="pic">
+					<span ng-class="{'life-img':true,'life-img-1':life.imgLength==1,'life-img-2':life.imgLength==2||life.imgLength==4,'life-img-3':life.imgLength==3||life.imgLength>4}" 
+					ng-repeat="img in life.imgArr" 
+					ng-style="{'background-image':'url({{img.path}})'}" ng-click="showLifeImg(img.path)"></span>
+					<!-- <span ng-class="{'life-img':true,'life-img-1':life.imgLength==1,'life-img-2':life.imgLength==2||life.imgLenth==4,}" 
+					ng-repeat="img in life.imgArr" 
+					ng-style="{'background-image':'url({{img.path}})'}" ng-click="showLifeImg(life, img)"></span> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-hide="lifeLoaded" class="load">
+		<img src="../../assets/images/loading2.gif" class="common-icon">
+        正在加载...
+	</div>
+    <div ng-show="lifeLoaded" class="load"></i>没有更多内容</div>
+</div>
+<!-- 发型师作品 -->
+<div class="stylist-work-container" ng-if="work">
+	<div infinite-scroll="getWorks()" infinite-scroll-disabled="workLoading" infinite-scroll-distance="1">
+		<div class="work-container">
+			<span class="item" ng-repeat="work in workList" ng-click="toWorkDetail(work)">
+				<img ng-src="{{work.imgurl}}">
+				<div class="info">
+					<span ng-bind="work.name" class="ellipsis text-center"></span>
+				</div>
+				<div class="infophotonum">
+					<img src="../../assets/images/workphoto.png" alt="">
+					<span ng-bind="work.num"></span>
+				</div>
+			</span>
+		</div>
+		<div ng-hide="workLoaded" class="load">
+			<img src="../../assets/images/loading2.gif" class="common-icon">
+            正在加载...
+		</div>
+	    <div ng-show="workLoaded" class="load"></i>没有更多内容</div>	
+	</div>
+</div>
+</div>
+</div>
+<div class="showlifeimage" ng-show="lifeimgdiv" ng-click="hidlifeimgdiv()">
+	<img src="{{fixedshowimg}}" alt="">
+</div>

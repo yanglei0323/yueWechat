@@ -1,0 +1,173 @@
+#recharge-container {
+	background-color: #f1f1f1;
+	.display-flex {
+		display: -moz-box; 
+		display: -ms-flexbox;
+		display:box;
+		display: -webkit-box;
+		display: flex;
+		display: -webkit-flex;
+	}
+	.display-flex-column {
+		display: -moz-box; 
+		display: -ms-flexbox;
+		display:box;
+		display: -webkit-box;
+		display: flex;
+		display: -webkit-flex;
+		-moz-flex-direction:column;
+		-ms-flex-direction:column;
+		-o-flex-direction:column; 
+		flex-direction:column; 
+		-webkit-flex-direction:column;
+	}
+	.background-size (@size1: 100%, @size2: 100%) {
+	    -webkit-background-size: @size1 @size2;
+	    -moz-background-size: @size1 @size2;
+	    background-size: @size1 @size2;
+	}
+	.recharge {
+		background-color: #f1f1f1;
+		.account {
+			position: relative;
+			height: 5.333333rem;
+			width: 10.0rem;
+			background: url("../../assets/images/recharge_bg.png") no-repeat;
+			.background-size;
+			.display-flex-column;
+			-moz-justify-content: flex-end;
+			-ms-justify-content: flex-end;
+			-o-justify-content: flex-end;
+			justify-content: flex-end;
+			-webkit-justify-content: flex-end;
+			-moz-align-items:center;
+			-ms-align-items:center;
+			-o-align-items:center;
+			align-items:center;
+			-webkit-align-items:center;
+			.instruction {
+				position: absolute;
+				right: 0.266667rem;
+				top: 0.4rem;
+				font-size: 0.4rem;
+				color: #ffffff;
+			}
+			.balance {
+				font-size: 0.666667rem;
+				color: #ffffff;
+				margin-bottom: 0.4rem;
+			}
+			.activity-info {
+				font-size: 0.4rem;
+				color: #fdf007;
+				margin-bottom: 0.48rem;
+			}
+		}
+		.item-container {
+			background-color: #ffffff;
+			padding: 0 0.266667rem;
+			.item {
+				.display-flex;
+				-moz-align-items:center;
+				-ms-align-items:center;
+				-o-align-items:center;
+				align-items:center;
+				-webkit-align-items:center;
+				-moz-justify-content: space-between;
+				-ms-justify-content: space-between;
+				-o-justify-content: space-between;
+				justify-content: space-between;
+				-webkit-justify-content: space-between;
+				height: 1.333333rem;
+				width: 100%;
+				border-bottom: 0.013333rem solid #cccccc;
+				.select-icon {
+					margin-left: 0.266667rem;
+					img {
+						width: 0.48rem;
+						height: 0.48rem;
+					}
+				}
+				.price {
+					width: 3.0rem;
+					font-size: 0.4rem;
+					color: #666666;
+				}
+				.type-icon {
+					width: 0.56rem;
+					height: 0.48rem;
+					img {
+						width: 0.56rem;
+						height: 0.48rem;
+					}
+				}
+				.type-text {
+					font-size: 0.4rem;
+					color: #666666;
+					width: 3.333333rem;
+					input[type=text] {
+						width: 3.08rem;
+						height: 0.8rem;
+						border: 0.013333rem solid #c0a97a;
+						padding-left: 0.066667rem;
+					}
+				}
+			}
+		}
+		.recommender {
+			padding: 0 0.266667rem;
+			margin-top: 0.4rem;
+			background-color: #ffffff;
+			height: 1.946667rem;
+			width: 100%;
+			.display-flex;
+			-moz-justify-content: space-between;
+			-ms-justify-content: space-between;
+			-o-justify-content: space-between;
+			justify-content: space-between;
+			-webkit-justify-content: space-between;
+			-moz-align-items:center;
+			-ms-align-items:center;
+			-o-align-items:center;
+			align-items:center;
+			-webkit-align-items:center;
+			font-size: 0.4rem;
+			color: #666666;
+			.text-small {
+				font-size: 0.346667rem;
+				margin-left: 0.2rem;
+			}
+			.arrow-r {
+				margin-left: 0.186667rem;
+				.display-flex;
+				width: 0.586667rem;
+				height: 0.586667rem;
+				-moz-align-items:center;
+				-ms-align-items:center;
+				-o-align-items:center;
+				align-items:center;
+				-webkit-align-items:center;
+				-moz-justify-content: center;
+				-ms-justify-content: center;
+				-o-justify-content: center;
+				justify-content: center;
+				-webkit-justify-content: center;
+				img {
+					width: 0.16rem;
+					height: 0.266667rem;
+				}
+			}
+		}
+		.confirm-btn {
+			height: 0.933333rem;
+			width: 8.933333rem;
+			background-color: #c0a97a;
+			border-radius: 0.133333rem;
+			color: #ffffff;
+			font-size: 0.453333rem;
+			margin: 1.306667rem auto 0 auto;
+			text-align: center;
+			line-height: 0.933333rem;
+		}
+	}
+}

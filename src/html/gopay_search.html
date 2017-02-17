@@ -1,0 +1,42 @@
+<div class="parent-container">
+	<div id="designer-search">
+		<div class="search-title-bar">
+			<span class="search-box">
+				<img src="../../assets/images/search_1.png" alt="搜索图标" class="common-icon">
+				<form ng-submit="search()">
+					<input type="search" placeholder="请输入发型师姓名" ng-model="word">
+				</form>
+			</span>
+			<span class="cancel-btn" back>取消</span>
+		</div>
+		<!-- 发型师 -->
+		<div class="item-container" ng-if="designerList.length > 0">
+			<div class="item" ng-repeat="designer in designerList" ng-click="toDesignerDetail(designer)">
+				<img ng-src="{{designer.avatar}}" class="designer-head-pic">
+				<div class="newdesign" style="position:relative;">
+					<div class="dsdiv-1">
+						<span ng-bind="designer.name"></span>&nbsp;|&nbsp;<span ng-bind="designer.jobtitle"></span>
+					</div>
+					<div class="dsdiv-2">
+						<img ng-repeat="star in designer.starUrl" ng-src="{{star.path}}" class="star-icon">
+					</div>
+					<div class="dsdiv-3">
+						共接单<span ng-bind="designer.ordernum"></span>次
+					</div>
+					<div class="dsdiv-4">
+						剪发：<span class="dsjf">
+							￥<span ng-bind="designer.cutmoney"></span>
+						</span>
+					</div>
+					<div class="dsdiv-5">
+						<span class="bottom text-right">
+							<img src="../../assets/images/location.png" class="location-icon">
+							<span ng-bind="designer.store.name"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div ng-if="hasNoResult" class="text-center"><div class="nothingDiv"><img src="../../assets/images/box.png" alt=""></div><span class="nothingText">抱歉！没有找到您想要的结果</span></div>
+</div>

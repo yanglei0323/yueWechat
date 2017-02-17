@@ -1,0 +1,70 @@
+<div class="homepackage">
+    <div class="homepackage-banner">
+    	<div class="goback" ng-click="toDesignerDetail()"><img src="../../assets/images/goback.png" alt=""></div>
+    	<div advertise class="swiper-container slider-container banner">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide" ng-repeat="item in adList" on-finish-render-filters>
+	                <img ng-src="{{item.imgurl}}">
+	            </div>
+	        </div>
+	        <div class="swiper-pagination"></div>
+	    </div>
+    </div>
+    <div class="homepackage-contain">
+    	<div class="packageinfo">
+    		<div class="packagename" ng-bind="packageinfo.name"></div>
+    		<div class="packageprice">
+    			<span class="actualprice">体验价：￥<span ng-bind="packageinfo.actualprice"></span></span>
+    			<span class="originprice">市场价：￥<span ng-bind="packageinfo.originprice"></span></span>
+			</div>
+			<!-- <div class="shoucang">
+				<img src="../../assets/images/shoucang-3.png" alt="">
+			</div> -->
+    	</div>
+
+    	<div class="serviceinfo">
+    		<div class="servicetitle">服务说明</div>
+    		<div class="servicecontain">
+    			<!-- <span ng-bind="serviceinfo[0]"></span><br>
+    			<span ng-bind="serviceinfo[1]"></span><br>
+    			<span ng-bind="serviceinfo[2]"></span><br>
+    			<span ng-bind="serviceinfo[3]"></span><br> -->
+    			<div ng-repeat="item in serviceinfo">
+    				<span ng-bind="item"></span><br>
+    			</div>
+    		</div>
+    	</div>
+
+		<div class="designer" ng-click="packagedesignerlist()">
+			<span>造型师（<span ng-bind="designercount"></span>）</span>
+			<img src="../../assets/images/arrow_grey.png" alt="" class="desinergo">
+		</div>
+		<div class="designerlistdiv">
+			<div class="swiper-container flash-sale-content" flashsale>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide item" ng-repeat="person in designerList" 
+					on-flash-sale-render-finished ng-click="selectperson(person)">
+						<span class="select-icon">
+							<img src="../../assets/images/wxzfxs@2x.png" class="designselect-icon" ng-if="!person.selected">
+							<img src="../../assets/images/xzfxs@2x.png" class="designselect-icon" ng-if="person.selected">
+						</span>
+						<div class="persondiv"><img ng-src="{{person.avatar}}"></div>
+						<div ng-bind="person.name"></div>
+						<div ng-bind="person.jobtitle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="okbtn" ng-click="truepackage()">选中该作品</div>
+
+		<div class="showimg" ng-show="ssmdpic"><img ng-src="http://photo.yueyishujia.com:8112{{packageinfo.detailimgurl}}" alt=""></div>
+		
+		
+
+    </div>
+    <div class="fixeddiv" ng-show="boxtextshow" ng-click="hidtstext()">
+    	<div class="tstext">请选择发型师</div>
+    </div>
+    	
+</div>

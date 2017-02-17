@@ -1,0 +1,41 @@
+<div class="title-bar">
+    <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+    <span>完善信息</span>
+</div>
+<div id="complete-info-container">
+    <form>
+        <div class="success-tips" ng-hide="modify">
+            <img src="../../assets/images/dui.png" alt="正确图标">
+            恭喜您！注册成功
+        </div>
+        <img ngf-thumbnail="avatar || '../../assets/images/zhaoxiang.png'" id="upload-headpic" ngf-select ng-model="avatar" name="avatar" ngf-pattern="'image/*'"
+         ngf-accept="'image/*'" ngf-max-size="5MB">
+        <div class="upload-tips">“点击上传真实的头像”</div>
+        <div class="use-tips" ng-hide="modify">填写完整信息赠送10积分，可直接用于积分商城哦~</div>
+        <div class="input-container margin-top-88">
+            <img src="../../assets/images/nickname.png" id="nickname-icon">
+            <input type="text" placeholder="请输入您的昵称（必填）" ng-model="nickname"/>
+        </div>
+        <div class="input-container margin-top-55">
+            <img src="../../assets/images/shengri.png" id="shengri-icon">
+            <input type="date" placeholder="请输入您的生日（选填）" ng-model="birthday" class="birthday">
+        </div>
+        <div class="sex-select">
+            <span class="sex-group sex-male">
+                <img src="../../assets/images/male.png" alt="男" ng-show="sexFlag!=0" ng-click="setSexFlag(0)">
+                <img src="../../assets/images/male_h.png" alt="男" ng-hide="sexFlag!=0">
+                <span class="sex-text">
+                    我是男神
+                </span>
+            </span>
+            <span class="sex-group sex-female">
+                <img src="../../assets/images/female.png" alt="女" ng-show="sexFlag!=1" ng-click="setSexFlag(1)">
+                <img src="../../assets/images/female_h.png" alt="女" ng-show="sexFlag==1">
+                <span class="sex-text">我是女神</span>
+            </span>
+        </div>
+        <div id="done-btn" ng-click="complete()">
+            完&nbsp;&nbsp;&nbsp;&nbsp;成
+        </div>
+    </form>
+</div>

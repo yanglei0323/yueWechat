@@ -1,0 +1,60 @@
+<div id="balance-container">
+<div class="title-bar">
+    <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+    <span>我的余额</span>
+    <span class="title-bar-right"><a href="javascript:void(0)" class="delete" ng-click="showFilter()">筛选</a></span>
+</div>
+<div class="count-balance">
+    <span><img src="../../assets/images/coin.png"/></span>
+    <span class="balance-num">账户余额&nbsp;￥<span ng-bind="balance"></span></span>
+</div>
+<div class="head">
+    <span>收支余额</span>
+    <span>累计余额</span>
+    <span>时间</span>
+    <span>类型</span>
+</div>
+ <div infinite-scroll="getBalanceList()" infinite-scroll-disabled="loading" infinite-scroll-distance="1">
+    <div class="balance-item" ng-repeat="balance in balanceList">
+        <!-- 收支余额 -->
+        <span class="price"><span ng-bind="balance.price"></span></span>
+        <!-- 累计余额 -->
+        <span class="price"><span ng-bind="balance.currentbalance"></span></span>
+        <!-- 时间 -->
+        <span class="time" ng-bind="balance.time"></span>
+        <!-- 类型 -->
+        <span class="type" ng-bind="balance.type"></span>
+    </div>
+    <div ng-show="loading && !loaded" class="load">加载中...</div>
+        <div ng-show="loaded" class="load"></i>没有更多了</div>
+</div>
+<div class="filter clearfix" forbid-scroll ng-show="isFiltering" ng-click="hideFilter()">
+    <div class="attr-select" ng-click="preventHideFilter($event)">
+        <div class="title">方式</div>
+        <div class="filter-row">
+            <span ng-class="{'filter-item':true,'selected-item':filterType==1}" ng-click="setFilter(1)">收入</span>
+            <span ng-class="{'filter-item':true,'selected-item':filterType==2}" ng-click="setFilter(2)">支出</span>
+        </div>
+        <div class="title">开始时间</div>
+        <div class="filter-row">
+            <input type="date" ng-model="startTime">
+        </div>
+        <div class="title">结束时间</div>
+        <div class="filter-row">
+            <input type="date" ng-model="endTime">
+        </div>
+        <div class="title">类型</div>
+        <div class="filter-row">
+            <span ng-class="{'filter-item':true,'selected-item':filterType==3||filterType==1}" ng-click="setFilter(3)">充值</span>
+            <span ng-class="{'filter-item':true,'selected-item':filterType==4||filterType==1}" ng-click="setFilter(4)">赠送</span>
+        </div>
+        <div class="filter-row">
+            <span ng-class="{'filter-item':true,'selected-item':filterType==5||filterType==2}" ng-click="setFilter(5)">部分</span>
+            <span ng-class="{'filter-item':true,'selected-item':filterType==6||filterType==2}" ng-click="setFilter(6)">订单</span>
+        </div>
+        <div class="confirm-btn" ng-click="confirmFilter()">
+            确定
+        </div>
+    </div>
+</div>
+</div>

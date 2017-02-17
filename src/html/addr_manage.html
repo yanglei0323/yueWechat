@@ -1,0 +1,34 @@
+<div class="parent-container">
+<div id="addr-manage-container">
+<div class="title-bar">
+    <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+    <span>地址管理</span>
+</div>
+<div class="addr-manage">
+    <div class="addr-item" ng-repeat="addr in addrList">
+        <div class="info-panel">
+            <span class="name" ng-bind="addr.name"></span>
+            <span class="phone" ng-bind="addr.telephone"></span>
+            <span class="address"><span ng-bind="addr.city"></span><span ng-bind="addr.address"></span></span>
+        </div>
+        <div class="operation-panel">
+            <div class="left" ng-click="setDefaultSite(addr)">
+                <img src="../../assets/images/common_selected.png" alt="默认地址" ng-if="checkDefault(addr)">
+                <img src="../../assets/images/common_unselected.png" alt="非默认地址" ng-if="!checkDefault(addr)">
+                <span class="tips">默认地址</span>
+            </div>
+            <div class="right">
+                <img src="../../assets/images/edit.png" alt="编辑" class="edit-icon" ng-click="toEditAddr($event, addr)">
+                <span class="tips">编辑</span>
+                <img src="../../assets/images/delete.png" alt="删除" class="delete-icon" ng-click="delete(addr)">
+                <span>删除</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="add-addr" ng-click="toAddAddr()">
+    <img src="../../assets/images/add_addr.png" alt="新建地址">
+    <span>新建地址</span>
+</div>
+</div>
+</div>

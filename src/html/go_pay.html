@@ -1,0 +1,158 @@
+<div id="go-pay-container">
+    <div class="title-bar">
+        <!-- <span class="title-bar-left" back><img src="../../assets/images/back.png"></span> -->
+        <span>马上买单</span>
+    </div>
+    <div class="go-pay">
+    	<div class="gopay-search" ng-show="!personshow">
+    		<!-- <span class="search-box">
+				<img src="../../assets/images/search_1.png" alt="搜索图标" class="common-icon">
+				<form ng-submit="search()">
+					<input type="search" placeholder="请输入设计师名称/商品名称" ng-model="keyword">
+				</form>
+			</span> -->
+
+			<div class="search-box" ng-click="odersearch()">
+                <span><img src="../../assets/images/msmdss.png" alt=""></span>
+                <span>请输入设计师名称</span>
+            </div>
+    	</div>
+        <div class="select-designer" ng-click="selectStore()" ng-show="!personshow">
+            <span>发型师：</span>
+            <span ng-bind="designerName" class="xzdesigner"></span>
+            <span class="designer">
+                <img src="../../assets/images/qumaidan-1.png" class="arrow-icon">
+            </span>
+        </div>
+        <div class="firstinfodiv" ng-show="commonshow">
+			<div class="firstinfodiv-title" ng-bind="commonname"></div>
+	    	<div class="firstinfodiv-item" ng-repeat="item in serviceItemList_1" ng-click="selectfirstItem(item)">
+	    		<div class="left">
+	    			<img src="../../assets/images/common_unselected.png" ng-hide="item.selected" class="common-icon">
+	    			<img src="../../assets/images/common_selected.png" ng-show="item.selected" class="common-icon">
+	    			<span ng-bind="item.name"></span>
+	    		</div>
+	    		<div class="right">
+	    			<span>￥<span ng-bind="item.actualprice"></span></span>
+	    		</div>
+	    	</div>
+        </div>
+
+
+        <div class="item-container">
+            <div class="item" ng-repeat="service in serviceList" ng-click="showService(service)">
+            	<span ng-bind="service.name" class="service-name"></span>
+            	<span class="servicelowprice">￥<span ng-bind="service.lowprice" ></span>起</span>
+            	<span><img src="../../assets/images/qumaidan-1.png" class="arrow-icon"></span>
+            </div>
+            <br />
+            <div class="item">
+            	<span class="service-name">手动输入：</span>
+            	<input type="text" placeholder="询问发型师后输入" class="serviceinput-1" autoComplete='off'>
+            </div>
+            <div class="serviceinputdiv" ng-click="showhidinputdiv()">
+            	<span ng-show="showinputdiv"><img src="../../assets/images/inputdiv-2.png" alt="" class="inputimg"></span>
+            	<span ng-show="!showinputdiv"><img src="../../assets/images/inputdiv-1.png" alt="" class="inputimg"></span>
+            	<span>输入不参与优惠金额（如精华类，套餐类）</span>
+        	</div>
+        	<div class="item" ng-show="showinputdiv">
+            	<span class="service-name">其他金额：</span>
+            	<input type="text" placeholder="询问发型师后输入" class="serviceinput-2" autoComplete='off'>
+            </div>
+        </div>
+        <!-- <div class="selected-items-container">
+            <span>已选择项目</span>
+            <div class="selected-items" ng-repeat="item in selectedItem">
+                <span ng-bind="item.name"></span>
+                <span>价格:<span ng-bind="item.price"></span></span>
+            </div>
+        </div> -->
+	    <!-- <div class="common-activity-container">
+	    	<div class="title">打折和立减活动</div>
+	    	<div class="item" ng-repeat="activity in commonActivityList">
+	    		<span ng-bind="activity.name" class="activity-name"></span>
+	    		<img src="../../assets/images/common_unselected.png" class="common-icon" ng-hide="activity.selected" ng-click="selectCommonActivity(activity)">
+	    		<img src="../../assets/images/common_selected.png" class="common-icon" ng-show="activity.selected" ng-click="selectCommonActivity(activity)">
+	    	</div>
+	    </div>
+	    <div class="nu-activity-container">
+	    	<div class="title">新用户活动</div>
+	    	<div class="item" ng-repeat="activity in nuActivityList">
+	    		<span ng-bind="activity.name" class="activity-name"></span>
+	    		<span ng-class="{'icon-check-empty':!activity.selected,'icon-check':activity.selected,'text-highlight':true,'check-icon':true}"  ng-click="selectNUActivity(activity)"></span>
+	    	</div>
+	    </div> -->
+	    <!-- <button class="confirm-btn" ng-click="confirm()">确定</button> -->
+
+    </div>
+    <div class="fixedpayconfirm">
+		<div class="fixedpayconfirm-1"><span>实付款：￥<span ng-bind="price"></span></span></div>
+		<div class="fixedpayconfirm-2" ng-click="confirm()">立即支付</div>
+	</div>
+</div>
+
+
+<div class="option" ng-if="showMask" forbid-scroll name="mask">
+    <div class="service-item-container" ng-repeat="service in usefulServiceList" ng-show="service.clicking">
+    	<div class="item-tab" ng-show="service.hasTab">
+    		<span ng-repeat="tab in service.tabs" ng-bind="tab.tabName" ng-click="selectTab(service, tab)" ng-class="{'tab-highlight':tab.selected}"></span>
+    	</div>
+    	<div class="service-item" ng-repeat="item in service.serviceItemList">
+    		<div class="left">
+    			<img src="../../assets/images/common_unselected.png" ng-hide="item.selected" class="common-icon" ng-click="selectItem(item)">
+    			<img src="../../assets/images/common_selected.png" ng-show="item.selected" class="common-icon" ng-click="selectItem(item)">
+    			<span ng-bind="item.name" ng-click="selectItem(item)"></span>
+    		</div>
+			<div class="chosenum" ng-if="changenumdiv">
+				<div class="getdownnum" ng-click="getdownnum(item)"><div style="width:1rem;height:0.03rem;border:0.015rem solid #ececec;margin:0.26rem auto;"></div></div>
+				<span class="inputnum" ng-bind="item.englishname"></span>
+				<div class="getupnum" ng-click="getupnum(item)"><img src="../../assets/images/getupnum.png" alt=""></div>
+			</div>
+    		<div class="right">
+    			<span ng-click="selectItem(item)">￥<span ng-bind="item.actualprice"></span></span>
+    		</div>
+    	</div>
+    	<div ng-show="service.hasTab" class="hairstylediv">
+    		<span class="hairstyletext">温馨提示：</span><br>
+    		<span>短发：头发长度在下巴以上（含）到下巴的位置</span><br>
+    		<span>中发：在下巴以下肩部以上</span><br>
+    		<span>长发：在肩部以下</span><br>
+    	</div>
+    	<div class="ok-btn" ng-click="confirmSelectItem(service)">
+    		<button>OK</button>
+    	</div>
+    	<!-- <img src="../../assets/images/cancel.png" class="cancel-icon" ng-click="hideMask()"> -->
+    </div>
+</div>
+<!-- <div class="bottom-nav" ng-show="!personshow">
+    <span class="item" ng-click="navigate(1)">
+        <span>
+            <img src="../../assets/images/shouye.png">
+        </span>      
+        <span class="text">首页</span>
+    </span>
+    <span class="item" ng-click="navigate(2)">
+        <span>
+            <img src="../../assets/images/faxingshi.png">
+        </span>
+        <span class="text">消息</span>
+    </span>
+    <span class="item" ng-click="navigate(3)">
+        <span>
+            <img src="../../assets/images/yuyue_h.png">
+        </span>
+        <span class="text highlight">买单</span>
+    </span>
+    <span class="item" ng-click="navigate(4)">
+        <span>
+            <img src="../../assets/images/dingdan.png">
+        </span>
+        <span class="text">悦购</span>   
+    </span>
+    <span class="item" ng-click="navigate(5)">
+        <span>
+            <img src="../../assets/images/me.png">
+        </span>
+        <span class="text">我的</span>
+    </span>
+</div> -->

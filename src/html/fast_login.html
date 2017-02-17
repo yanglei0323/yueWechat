@@ -1,0 +1,55 @@
+<div class="title-bar">
+    <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+    <span>快速登录</span>
+</div>
+<div id="fast-login-container">
+<div class="form-group">
+        <span class="icon">
+            <img src="../../assets/images/phone.png" alt="手机号" class="phone-icon">
+        </span>
+        <span class="text-container">
+            <input type="text" placeholder="请输入您的手机号" class="input-text" name="phone-num" maxlength="11" ng-model="phone">
+        </span>
+
+    </div>
+    <div class="form-group margin-top-28 border-bottom-none code-container">
+        <div class="code">
+            <span class="icon">
+                <img src="../../assets/images/code.png" alt="验证码" class="code-icon">
+            </span>
+            <span class="text-container">
+                <input type="text" placeholder="请输验证码" class="input-text" ng-model="code" maxlength="4">
+            </span>
+        </div>
+        <div ng-class="{'get-code-btn':true,'unuseful':sending}" ng-click="getCode()" ng-bind="sendCodeText"></div>
+    </div>
+    <div id="confirm-login-btn" class="btn-common" ng-click="confirmLogin()">
+        确认登录
+    </div>
+    <div id="to-login-btn" class="btn-common" ng-click="toLogin()">
+        已有账号点击登录
+    </div>
+    <!-- <div class="more-choice-tips">
+        <span class="line">
+            <hr>
+        </span>
+        <span class="tips">您还有更多登录选择</span>
+        <span class="line">
+            <hr>
+        </span>
+    </div>
+    <div class="login-choices">
+        <span id="weibo-login">
+            <img src="../../assets/images/denglu_weibo.png" alt="微博登录">
+            <span class="tips">微博</span>
+        </span>
+        <span id="qq-login">
+            <img src="../../assets/images/denglu_qq.png" alt="qq登录">
+            <span class="tips">QQ</span>
+        </span>
+        <span id="weixin-login" class="item">
+            <img src="../../assets/images/denglu_wechat.png" alt="微信登录">
+            <span class="tips">微信</span>
+        </span>
+    </div> -->
+</div>

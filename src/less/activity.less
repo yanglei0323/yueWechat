@@ -1,0 +1,55 @@
+#activity-container {
+	background-color: #f1f1f1;
+	.activity {
+		.item {
+			background-color: #ffffff;
+			padding: 0.4rem 0.266667rem;
+			display: -moz-box; 
+	        display: -ms-flexbox;
+	        display:box;
+	        display: -webkit-box;
+	        display: flex;
+	        display: -webkit-flex;
+	        -moz-align-items:center;
+	        -ms-align-items:center;
+	        -o-align-items:center;
+	        align-items:center;
+	        -webkit-align-items:center;
+			-moz-justify-content: center;
+			-ms-justify-content: center;
+			-o-justify-content: center;
+			justify-content: center;
+			-webkit-justify-content: center;
+			margin-bottom: 0.133333rem;
+			position: relative;
+			img {
+				width: 9.44rem;
+				height: 4.0rem;
+				border-radius: 0.133333rem;
+			}
+			.activity-info {
+				position: absolute;
+				width: 9.44rem;
+				height: 4.0rem;
+				background: rgba(0, 0, 0, 0.5);
+				left: 0.266667rem;
+				top: 0.4rem;
+				color: #ffffff;
+				border-radius: 0.133333rem;
+				#activity-name {
+					width: 100%;
+					font-size: 0.64rem;
+					position: absolute;
+					top: 1.266667rem;
+				}
+				#activity-time {
+					width: 100%;
+					font-size: 0.32rem;
+					position: absolute;
+					bottom: 0.266667rem;
+					right: 0.266667rem;
+				}
+			}
+		}
+	}
+}

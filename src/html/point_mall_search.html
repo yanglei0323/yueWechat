@@ -1,0 +1,33 @@
+<div class="parent-container">
+	<div id="mall-search">
+		<div class="search-title-bar">
+			<span class="search-box">
+				<img src="../../assets/images/search_1.png" alt="搜索图标" class="common-icon">
+				<form ng-submit="search()">
+					<input type="search" placeholder="请输入积分商品名称" ng-model="word">
+				</form>
+				
+			</span>
+			<span class="cancel-btn" back>取消</span>
+		</div>
+		<!-- 热门商品 -->
+		<div class="item-container" ng-if="goodsList.length > 0">
+			<div class="type-name">搜索积分商品结果</div>
+			<div class="item" ng-repeat="goods in goodsList" ng-click="toGoodsDetail(goods)">
+				<img ng-src="{{goods.img}}" class="goods-pic">
+				<div class="info">
+					<span class="price">
+						￥<span ng-bind="goods.realprice"></span>
+					</span>
+					<span class="middle">
+						<span ng-bind="goods.name" class="name"></span>
+					</span>
+					<span class="bottom text-right">
+						<span>销量：<span ng-bind="goods.salenum"></span></span>
+						<span class="inventory">库存：<span ng-bind="goods.inventory"></span></span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+<div class="parent-container">
+    <div id="coupon-container">
+        <div class="title-bar">
+            <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+            <span>请选择优惠券</span>
+        </div>
+        <div class="coupon-list">
+            <div class="coupon-item unused-item" ng-repeat="coupon in couponList" ng-click="selectCoupon(coupon)">
+                <span class="left-panel">
+                    <span class="left">
+                        <span class="type">
+                            <img ng-src="{{coupon.typePic}}">
+                        </span>
+                        <span>
+                            <img src="../../assets/images/money.png" class="money">
+                        </span>
+                    </span>
+                    <span class="middle-panel">
+                        <span>{{coupon.price}}</span>
+                    </span>
+                </span>
+                <span class="right-panel">
+                    <span class="font-1">{{coupon.typeText}}</span>
+                    <span class="rule">{{coupon.rule}}</span>
+                    <span class="font-1">{{coupon.starttime}}~{{coupon.endtime}}</span>
+                </span>
+            </div>
+            <!-- <div class="empty-tips" ng-if="noUnused">暂无相关优惠券！</div> -->
+        </div>
+    </div>
+</div>

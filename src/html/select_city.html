@@ -1,0 +1,17 @@
+<div id="select-city-container">
+    <div class="title-bar bg-white">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <div class="citySelect-1"><span>城市选择</span></div>
+        <div class="citySelect-2"><span>CITY SELECTION</span></div>
+    </div>
+    <!-- <div class="city-item" ng-repeat="city in areaList" ng-bind="city.name" ng-click="selectCity(city)"></div> -->
+    <div class="cityH">
+    	<div class="city-container" ng-if="!isList">
+			<div class="item-container">
+				<span class="city-item" ng-repeat="city in citylist" ng-click="selectCity(city)">
+					<img ng-src="http://photo.yueyishujia.com:8112{{city.imgurl}}" class="city-img">
+				</span>
+			</div>
+		</div>
+    </div>
+</div>

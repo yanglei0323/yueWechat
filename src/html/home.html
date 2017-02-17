@@ -1,0 +1,450 @@
+<!-- 首页 -->
+<!-- <div class="title-bar" style="border-bottom:0px solid #fff;background-color:transparent;color:#fff;z-index:10;">
+    <span class="title-bar-left">
+        <span class="text ellipsis" ng-click="selectCity()" ng-bind="selectedCity" style="color:#fff;"></span>
+        <img src="../../assets/images/Chevron.png" alt="" style="height: 0.286667rem;width: 0.486667rem;margin-left: 0.08rem;">
+    </span>
+    <span>ARTISAN HOUSE</span>
+    <span class="title-bar-right" style="right:0.4rem;width:0.8rem;height:0.8rem;border:1px solid transparent;border-radius:50%;top:0.2rem;background:rgba(0,0,0,0.5);">
+        <img src="../../assets/images/search_2.png" alt="搜索" id="search" ng-click="homeSearch()" style="width:0.6rem;height:0.6rem;margin:0.1rem;">
+    </span>
+</div> -->
+<div class="nh-nav">
+    <div class="nh-relat">
+        <div class="nh-bg"></div>
+        <div class="nnav-left" ng-click="selectCity()">
+            <span ng-bind="selectedCity"></span>
+            <img src="../../assets/images/Chevron.png" alt="">
+        </div>
+        <div class="nnav-middle"><span>ARTISAN HOUSE</span></div>
+        <div class="nnav-right">
+            <img src="../../assets/images/syss@2x.png" alt="搜索" id="search" ng-click="homeSearch()">
+        </div>
+    </div>
+</div>
+<div class="home">
+    <div advertise class="swiper-container slider-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" ng-repeat="item in adList" on-finish-render-filters>
+                <img ng-src="{{item.imgurl}}" ng-click="jump(item)">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+	<div class="top-nav">
+		<span class="item" ng-click="topNav(1)">
+            <span><img src="../../assets/images/shishangfaxing.png"></span>     
+            <span class="text">美发</span>
+        </span>
+        <span class="item" ng-click="topNav(2)">
+            <span><img src="../../assets/images/jiamubiao.png"></span>
+            <span class="text">美甲</span>
+        </span>
+        <span class="item" ng-click="topNav(3)">
+            <span><img src="../../assets/images/qumaidan.png"></span>
+            <span class="text">美妆</span>
+        </span>
+        <!-- 点击跳转到购买vip页面 -->
+        <span class="item" ng-click="topNav(4)">
+            <span><img src="../../assets/images/vip.png"></span>
+            <span class="text">美搭</span>
+        </span>
+	</div>
+    <div class="home-item padding-left-right-none home-item-first">
+        <span class="item-title-bar">
+            <span class="title">推荐造型师</span>
+            <span class="en-title">RECOMMEND MODELLING DIVISION</span>
+            <div class="swiper-container" designer id="designer-list">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide item" ng-repeat="designer in starDesigners" on-designer-render-finished>
+                        <img ng-src="{{designer.imgurl}}" ng-click="toDesigner(designer)">
+                        <div class="info">
+                            <div class="name" ng-bind="designer.designername"></div>
+                            <div class="bottom-info">
+                                <span ng-bind="designer.storename"></span>
+                                <span><span ng-bind="designer.jobtype"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </span>
+        <!-- <span class="more"><img src="../../assets/images/more.png" ng-click="toMore(1)"></span> -->
+    </div>
+    <div class="home-item">
+        <span class="item-title-bar">
+            <span class="title">明星门店</span>
+            <span class="en-title">STAR STORE</span>
+        </span>
+        <span class="more"><img src="../../assets/images/more.png" ng-click="toMore(2)"></span>
+        <div class="content store-container">
+            <span>
+                <img ng-src="{{starStore.imgurl}}" ng-click="toMore(2)">
+            </span>
+        </div>
+    </div>
+    <div class="home-item padding-left-right-none">
+        <span class="item-title-bar">
+            <span class="title">悦享美发</span>
+            <span class="en-title">YUE ENJOYS THE HAIR</span>
+        </span>
+        <!-- <span class="more"><img src="../../assets/images/more.png" ng-click="toMore(5)"></span> -->
+        <div>
+            <div class="hairstyle-content">
+                <!-- <span ng-repeat="item in mfpackageList" ng-click="showPackageInfo(item)" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{item.imgurl}}">
+                    <div class="info">
+                        <div class="name new-name" ng-bind="item.name"></div>
+                        <div class="bottom-info new-bottom-info">
+                            <span class="xj">￥<span ng-bind="item.actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info new-bottom-info">
+                            <span class="yj">门市价：￥<span ng-bind="item.originprice"></span></span>
+                        </div>
+                    </div>
+                </span> -->
+                <span ng-click="showPackageInfo(mfpackageList[0])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mfpackageList[0].imgurl}}">
+                    <div class="info">
+                        <div class="name new-name" ng-bind="mfpackageList[0].name"></div>
+                        <div class="bottom-info new-bottom-info">
+                            <span class="xj">￥<span ng-bind="mfpackageList[0].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info new-bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mfpackageList[0].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mfpackageList[1])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mfpackageList[1].imgurl}}">
+                    <div class="info">
+                        <div class="name new-name" ng-bind="mfpackageList[1].name"></div>
+                        <div class="bottom-info new-bottom-info">
+                            <span class="xj">￥<span ng-bind="mfpackageList[1].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info new-bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mfpackageList[1].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mfpackageList[2])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mfpackageList[2].imgurl}}">
+                    <div class="info">
+                        <div class="name new-name" ng-bind="mfpackageList[2].name"></div>
+                        <div class="bottom-info new-bottom-info">
+                            <span class="xj">￥<span ng-bind="mfpackageList[2].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info new-bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mfpackageList[2].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mfpackageList[3])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mfpackageList[3].imgurl}}">
+                    <div class="info">
+                        <div class="name new-name" ng-bind="mfpackageList[3].name"></div>
+                        <div class="bottom-info new-bottom-info">
+                            <span class="xj">￥<span ng-bind="mfpackageList[3].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info new-bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mfpackageList[3].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="home-item padding-left-right-none">
+        <span class="item-title-bar">
+            <span class="title">炫丽美甲</span>
+            <span class="en-title">DAZZLE BEAUTIFUL NAIL</span>
+        </span>
+        <!-- <span class="more"><img src="../../assets/images/more.png" ng-click="toMore(5)"></span> -->
+        <div>
+            <div class="hairstyle-content">
+                <!-- <span ng-repeat="item in mjpackageList" ng-click="showPackageInfo(item)" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{item.imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="item.name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="item.actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价：￥<span ng-bind="item.originprice"></span></span>
+                        </div>
+                    </div>
+                </span> -->
+                <span ng-click="showPackageInfo(mjpackageList[0])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mjpackageList[0].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mjpackageList[0].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mjpackageList[0].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mjpackageList[0].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mjpackageList[1])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mjpackageList[1].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mjpackageList[1].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mjpackageList[1].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mjpackageList[1].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mjpackageList[2])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mjpackageList[2].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mjpackageList[2].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mjpackageList[2].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mjpackageList[2].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mjpackageList[3])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mjpackageList[3].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mjpackageList[3].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mjpackageList[3].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mjpackageList[3].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="home-item padding-left-right-none">
+        <span class="item-title-bar">
+            <span class="title">百变美妆</span>
+            <span class="en-title">ACCENTUATED MAKEUP LOOK</span>
+        </span>
+        <!-- <span class="more"><img src="../../assets/images/more.png" ng-click="toMore(5)"></span> -->
+        <div>
+            <div class="hairstyle-content">
+                <!-- <span ng-repeat="item in mzpackageList" ng-click="showPackageInfo(item)" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{item.imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="item.name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="item.actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价：￥<span ng-bind="item.originprice"></span></span>
+                        </div>
+                    </div>
+                </span> -->
+                <span ng-click="showPackageInfo(mzpackageList[0])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mzpackageList[0].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mzpackageList[0].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mzpackageList[0].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mzpackageList[0].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mzpackageList[1])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mzpackageList[1].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mzpackageList[1].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mzpackageList[1].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mzpackageList[1].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mzpackageList[2])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mzpackageList[2].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mzpackageList[2].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mzpackageList[2].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mzpackageList[2].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mzpackageList[3])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mzpackageList[3].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mzpackageList[3].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mzpackageList[3].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mzpackageList[3].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="home-item padding-left-right-none">
+        <span class="item-title-bar">
+            <span class="title">时尚美搭</span>
+            <span class="en-title">FASHIONABLE BEAUTY BY</span>
+        </span>
+        <!-- <span class="more"><img src="../../assets/images/more.png" ng-click="toMore(5)"></span> -->
+        <div>
+            <div class="hairstyle-content">
+                <!-- <span ng-repeat="item in mdpackageList" ng-click="showPackageInfo(item)" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{item.imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="item.name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="item.actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价：￥<span ng-bind="item.originprice"></span></span>
+                        </div>
+                    </div>
+                </span> -->
+                <span ng-click="showPackageInfo(mdpackageList[0])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mdpackageList[0].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mdpackageList[0].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mdpackageList[0].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mdpackageList[0].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mdpackageList[1])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mdpackageList[1].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mdpackageList[1].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mdpackageList[1].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mdpackageList[1].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mdpackageList[2])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mdpackageList[2].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mdpackageList[2].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mdpackageList[2].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mdpackageList[2].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+                <span ng-click="showPackageInfo(mdpackageList[3])" class="hairDiv">
+                    <img ng-src="http://photo.yueyishujia.com:8112{{mdpackageList[3].imgurl}}">
+                    <div class="info">
+                        <div class="name" ng-bind="mdpackageList[3].name"></div>
+                        <div class="bottom-info">
+                            <span class="xj">￥<span ng-bind="mdpackageList[3].actualprice"></span></span>
+                        </div>
+                        <div class="bottom-info">
+                            <span class="yj">门市价:￥<span ng-bind="mdpackageList[3].originprice"></span></span>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="home-item padding-left-right-none">
+        <span class="item-title-bar">
+            <span class="title">时尚发型</span>
+            <span class="en-title">FASHIONABLE BEAUTY BY</span>
+        </span>
+        <!-- <span class="more"><img src="../../assets/images/more.png" ng-click="toMore(5)"></span> -->
+        <div class="hairstyle-nav">
+            <span class="item" ng-click="sort('popular')">
+                <span ng-hide="type=='popular'"><img src="../../assets/images/rexiao.png"></span>
+                <span ng-show="type=='popular'"><img src="../../assets/images/rexiao_h.png"></span>
+                <span ng-class="{'text':true,'text-highlight':type=='popular'}">综合</span>
+            </span>
+            <span class="item" ng-click="sort('latest')">
+                <span ng-hide="type=='latest'"><img src="../../assets/images/zuixin.png"></span>
+                <span ng-show="type=='latest'"><img src="../../assets/images/zuixin_h.png"></span>
+                <span ng-class="{'text':true,'text-highlight':type=='latest'}">最新</span>
+            </span>
+            <span class="item" ng-click="sort('hottest')">
+                <span ng-hide="type=='hottest'"><img src="../../assets/images/renqi.png"></span>
+                <span ng-show="type=='hottest'"><img src="../../assets/images/renqi_h.png"></span>
+                <span ng-class="{'text':true,'text-highlight':type=='hottest'}">人气</span>
+            </span>
+        </div>
+        <div infinite-scroll="getFashionHair()" infinite-scroll-disabled="loading" infinite-scroll-distance="0" class="minhairdiv">
+            <div class="hairstyle-content">
+                <span ng-repeat="hair in fashionHairList" ng-click="showHairInfo(hair)" class="hairDiv">
+                    <img ng-src="{{hair.imgurl}}" class="hairimg">
+                </span>
+            </div>
+            <div ng-show="loading" class="load">
+                <img src="../../assets/images/loading2.gif" class="common-icon">
+                正在加载...
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottom-nav">
+    <span class="item" ng-click="navigate(1)">
+        <span>
+            <img src="../../assets/images/shouye_h.png">
+        </span>      
+        <span class="text highlight">首页</span>
+    </span>
+    <span class="item" ng-click="navigate(2)">
+        <span>
+            <img src="../../assets/images/faxingshi.png">
+        </span>
+        <span class="text">消息</span>
+    </span>
+    <span class="item" ng-click="navigate(3)">
+        <span>
+            <img src="../../assets/images/yuyue.png">
+        </span>
+        <span class="text">买单</span>
+    </span>
+    <span class="item" ng-click="navigate(4)">
+        <span>
+            <img src="../../assets/images/dingdan.png">
+        </span>
+        <span class="text">悦购</span>   
+    </span>
+    <span class="item" ng-click="navigate(5)">
+        <span>
+            <img src="../../assets/images/me.png">
+        </span>
+        <span class="text">我的</span>
+    </span>
+</div>
+
+<div class="option" ng-if="showMask" name="mask" ng-click="hideMask()">
+    <div class="price-container" ng-if="!activityShow" ng-click="forbidHide($event)">
+        <img ng-src="{{priceImg}}">
+        <img src="../../assets/images/cancel.png" class="cancel common-icon" ng-click="hideMask()">
+        <!-- <img ng-src="{{activity.imgurl}}"> -->
+    </div>
+    <div class="activity-container" ng-if="activityShow">
+        <img src="../../assets/images/activity_cancel.png" class="activity-cancel-icon" ng-click="hideActivity()">
+        <img ng-src="{{activity.imgurl}}" ng-click="toActivity(activity, $event)">
+
+    </div>
+</div>

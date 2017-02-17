@@ -1,0 +1,82 @@
+<div class="option" forbid-scroll ng-if="showVipOption">
+	<div class="option-container">
+		<div class="tips">
+			<span class="title">请选择</span>
+		</div>
+		<div class="vip-option-container">
+			<span>
+				<div class="item" ng-repeat="vip in vipOptionList">
+					<span class="select-icon">
+						<img src="../../assets/images/common_selected.png" ng-show="vip.selected" ng-click="selectOptionVip(vip)">
+						<img src="../../assets/images/common_unselected.png" ng-hide="vip.selected" ng-click="selectOptionVip(vip)">
+					</span>
+					<span class="price">￥<span ng-bind="vip.price"></span></span>
+					<span class="type-icon">
+						<img ng-src="{{vip.imgurl}}">
+					</span>
+					<span class="type-text">
+						<span ng-bind="vip.servicediscount * 10"></span>折VIP
+					</span>
+				</div>
+			</span>
+		</div>
+		<div class="operation-panel">
+			<span class="btn-recommend" ng-click="confirmSelect()">确定</span>
+		</div>
+	</div>
+</div>
+<div class="parent-container">
+	<div id="recharge-container">
+		<div class="title-bar">
+		    <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+		    <span>在线充值</span>
+		</div>
+		<div class="recharge">
+			<div class="account">
+				<!-- <a class="instruction">充值说明</a>
+				<span class="balance">账户余额 ￥<span ng-bind="balance"></span></span>
+				<span class="activity-info">现在充值，送VIP卡哦！</span> -->
+			</div>
+			<div class="item-container">
+				<div class="item" ng-repeat="vip in vipList">
+					<span class="select-icon">
+						<img src="../../assets/images/common_selected.png" ng-show="vip.selected" ng-click="selectVip(vip)">
+						<img src="../../assets/images/common_unselected.png" ng-hide="vip.selected" ng-click="selectVip(vip)">
+					</span>
+					<span class="price">￥<span ng-bind="vip.price"></span></span>
+					<span class="type-icon">
+						<img ng-src="{{vip.imgurl}}">
+					</span>
+					<span class="type-text">
+						<span ng-bind="vip.servicediscount * 10"></span>折VIP <span ng-bind="vip.duration"></span>个月
+					</span>
+				</div>
+				<div class="item">
+					<span class="select-icon">
+						<img src="../../assets/images/common_selected.png" ng-show="otherPrice" ng-click="selectOtherPrice()">
+						<img src="../../assets/images/common_unselected.png" ng-hide="otherPrice" ng-click="selectOtherPrice()">
+					</span>
+					<span class="price">其他金额</span>
+					<span class="type-icon">
+					</span>
+					<span class="type-text">
+						<input name="other-price" type="text" ng-model="otherPriceNum"></input>
+					</span>
+				</div>
+			</div>
+			<div class="recommender" ng-click="selectStore()">
+				<span>请选择推荐人<span class="text-small">(选填)</span></span>		
+				<div class="flex">
+					<span ng-bind="designer.name"></span>
+					<span class="arrow-r">
+						<img src="../../assets/images/arrow_r_2.png">
+					</span>
+				</div>
+				
+			</div>
+			<div class="confirm-btn" ng-click="buyVip()">
+				确 认
+			</div>
+		</div>
+	</div>
+</div>

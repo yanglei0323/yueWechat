@@ -1,0 +1,104 @@
+<!-- 订单详情 -->
+<div id="order-detail-container">
+<div class="title-bar">
+    <span class="title-bar-left" back>
+        <img src="../../assets/images/back.png">
+    </span>
+    <span>订单详情</span>
+</div>
+<div class="order-detail">
+	<div class="order-state">
+		<div class="order-num">
+			<span>订单号：<span ng-bind="order.id"></span></span>
+			<span class="highlight" ng-bind="order.state"></span>
+		</div>
+		<div class="welcome-text">
+			<span>感谢您在悦艺术家购物，欢迎下次光临！</span>
+		</div>
+	</div>
+	<div class="user-info-container">
+		<span><img src="../../assets/images/location_2.png" class="common-icon"></span>
+		<span class="user-info">
+			<span class="top">
+				<span class="name">收货人：<span ng-bind="order.name"></span></span>
+				<span class="phone" ng-bind="order.telephone"></span>
+			</span>
+			<span class="site">
+				<span ng-bind="order.city"></span>
+				<span ng-bind="order.address"></span>
+			</span>
+		</span>
+	</div>
+	<div class="goods-list">
+		<div class="title">
+			商品清单
+		</div>
+		<div class="item-container">
+			<div class="item" ng-repeat="goods in order.goodslist" ng-click="toGoodsDetail(goods)">
+				<img ng-src="{{goods.imgurl}}" class="goods-icon">
+				<span class="goods-info">
+					<span class="intro">
+						<span class="name" ng-bind="goods.name">
+						</span>
+						<span class="price">￥ <span ng-bind="goods.price"></span></span>
+					</span>
+					<span class="buy-num">X <span ng-bind="goods.number"></span></span>
+				</span>
+			</div>
+		</div>
+		<!-- <div class="show-more">
+			<img src="../../assets/images/down_big.png" class="common-icon">
+		</div> -->
+	</div>
+	<div class="call-container">
+	    <a ng-href="tel:{{goods.servicetelephone.imgurl}}">
+			<div class="call">
+				<img src="../../assets/images/phone_2.png" class="common-icon">
+				<span class="tips">联系客服</span>
+			</div>
+		</a>
+	</div>
+	<div class="price-detail">
+		<div class="top">
+			<span class="item count-price">
+				<span>商品总额</span>
+				<span class="highlight">￥ <span ng-bind="order.price"></span></span>
+			</span>
+			<span class="item other-price">
+				<span>- 优惠</span>
+				<span class="highlight">￥ <span ng-bind="order.favourableprice"></span></span>
+			</span>
+			<span class="item other-price">
+				<span>+运费</span>
+				<span class="highlight">￥ <span ng-bind="order.freightcharges"></span></span>
+			</span>
+		</div>
+		<div class="bottom">
+			<span class="item real-pay">
+				<span>实付款：</span>
+				<span class="highlight">￥ <span ng-bind="order.actualprice"></span></span>
+			</span>
+			<span class="item order-time">
+				<span>下单时间：</span>
+				<span ng-bind="order.time"></span>
+			</span>
+			<span class="item" ng-if="order.stateflag==3||order.stateflag==4||order.stateflag==5||order.stateflag==8">
+				<span>付款方式：</span>
+				<span class="pay-way">
+					<span ng-repeat="item in order.payway" ng-bind="item.name"></span>
+				</span>
+			</span>
+		</div>
+	</div>
+</div>
+<div class="operation">
+	<span class="operation-item" ng-if="order.stateflag==0" ng-click="toPay(order)">立即支付</span>
+	<span class="operation-item" ng-if="order.stateflag==0" ng-click="cancelGoodsOrder(order)">取消订单</span>
+	<span class="operation-item" ng-if="order.stateflag==8" ng-click="toRemarkGoods(order)">去评价</span>
+	<span class="operation-item" ng-if="order.stateflag==3||order.stateflag==4||order.stateflag==5||order.stateflag==8"
+	 ng-click="applyRefund(order)">申请退款</span>
+	<span class="operation-item" ng-if="order.stateflag==4" ng-click="confirmReceipt(order)">确认收货</span>
+	<span class="operation-item" ng-if="order.stateflag==2||order.stateflag==4||order.stateflag==6||order.stateflag==7" ng-click="deleteGoodsOrder(order)">删除订单</span>
+	
+</div>
+</div>

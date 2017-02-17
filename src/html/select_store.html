@@ -1,0 +1,63 @@
+<div id="store-container">
+	<div class="title-bar">
+        <span class="title-bar-left" ng-click="tback()"><img src="../../assets/images/back.png"></span>
+	    <span>选择门店</span>
+	</div>
+	<!-- <div class="top-nav">
+		<span ng-class="{'nav-item':true,'selected':showStore}" ng-click="getStoreInfo()">
+			<span ng-bind="areaFilter"></span>
+			<img src="../../assets/images/down.png" class="icon" ng-if="!showStore">
+			<img src="../../assets/images/down_h.png" class="icon" ng-if="showStore">
+			<ul class="city-item-container" ng-show="showStore">
+				<li class="city-item" ng-repeat="area in areaList">
+					<span ng-bind="area.name" ng-class="{'item-text':true,'text-highlight':area.selected}" ng-click="selectCity(area, $event)"></span>
+				</li>
+			</ul>
+		</span>
+		<span ng-class="{'nav-item':true,'selected':filterShow}" ng-click="showFilterItems()">
+			<span ng-bind="filterText"></span>
+			<img src="../../assets/images/down.png" class="icon" ng-if="!filterShow">
+			<img src="../../assets/images/down_h.png" class="icon" ng-if="filterShow">
+			<ul class="filter-container" ng-show="filterShow">
+				<li class="filter-item">
+					<span ng-class="{'item-text':true,'text-highlight':filterDefault}" ng-click="filter('default', 0, $event)">综合排序</span>
+				</li>
+				<li class="filter-item">
+					<span ng-class="{'item-text':true,'text-highlight':filterMostReserve}" ng-click="filter('hottest', 1, $event)">订单最多</span>
+				</li>
+				<li class="filter-item">
+					<span ng-class="{'item-text':true,'text-highlight':filterNearest}" ng-click="filter('nearest', 2, $event)">离我最近</span>
+				</li>
+				<li class="filter-item">
+					<span ng-class="{'item-text':true,'text-highlight':filterCheapest}" ng-click="filter('cheapest', 3, $event)">价格最低</span>
+				</li>
+				<li class="filter-item">
+					<span ng-class="{'item-text':true,'text-highlight':filterExpensive}" ng-click="filter('expensive', 4, $event)">价格最高</span>
+				</li>
+			</ul>
+		</span>
+	</div> -->
+	<div class="grid-container">
+		<div infinite-scroll="getStoreList()" infinite-scroll-disabled="loading" infinite-scroll-distance="1">
+			<div class="item-container">
+				<span class="grid-item" ng-repeat="store in storeList" ng-click="toSelectDesigner(store)">
+					<img ng-src="{{store.img2}}" class="store-img">
+					<div class="store-info-mask">
+						<div class="store-name" ng-bind="store.name"></div>
+						<div class="store-address">
+							<!-- <img src="../../assets/images/location_4.png" class="common-icon"> -->
+							<span ng-bind="store.location"></span>
+						</div>
+					</div>
+				</span>
+			</div>
+			<div ng-hide="loaded" class="load">
+				<img src="../../assets/images/loading2.gif" class="common-icon">
+				正在加载...
+			</div>
+            <div ng-show="loaded" class="load"></i>没有更多内容</div>
+		</div>
+	</div>
+</div>
+<div class="designer-mask" ng-show="showMask" forbid-scroll>
+</div>

@@ -1,0 +1,33 @@
+<div id="invite-container">
+	<div class="title-bar">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <span>邀请好友注册送悦币</span>
+        <span class="title-bar-right">
+        	<img src="../../assets/images/share.png" class="common-icon" ng-click="invite()">
+        </span>
+    </div>
+    <div class="invite">
+    	<div class="invite-num">
+    		<span>
+    			当前已邀请<span ng-bind="recNum"></span>位好友注册，你还可以再邀请<span ng-bind="3-recNum"></span>位好友。邀请成功后立即前往悦币商城，缤纷好礼等你拿。
+    		</span>
+    	</div>
+    	<div class="invite-info-1">
+    		<p>一共可以邀请3位好友，每邀请一位新好友注册即可</p>
+    		<p>获得500悦币，moving!moving!moving!</p>
+    	</div>
+    	<div class="invite-code">
+    		<p class="font-color-3">您的专属邀请码</p>
+    		<p ng-bind="recCode" class="code-text"></p>
+    	</div>
+    	<div class="invite-info-2">
+    		<p>好友使用</p>
+    		<p>你的邀请码注册，对方可额外获得<span class="highlight-color">500悦币</span>；</p>
+    		<p>好友若为首次注册，</p>
+    		<p>注册成功后你亦获得<span class="highlight-color">500悦币</span>。</p>
+    	</div>
+    	<div class="invite-btn" ng-click="invite()">
+    		邀请好友
+    	</div>
+    </div>
+</div>

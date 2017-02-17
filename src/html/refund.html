@@ -1,0 +1,25 @@
+<div class="title-bar">
+	<span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+	<span>申请退款</span>
+</div>
+<div class="refund-content">
+    <form ng-submit="submit()">
+        <div class="reason-group">
+            <span class="text-container">
+                <select name="reasonflag" class="reason-select" ng-model="reasonFlag"
+                placeholder="退款原因(必填)" ng-options="reason.id as reason.reason for reason in reasonList">
+                    <option value="">退款原因(必填)</option>
+                </select>
+            </span>
+            
+
+        </div>
+        <textarea class="refund-brief" placeholder="退款说明(最多200字)" name="describe" ng-model="describe"></textarea>
+        <img ngf-thumbnail="pic1 || '../../assets/images/upload.png'" ngf-select ng-model="pic1" name="imgs" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" class="upload-pic">
+       <!--  <img ngf-thumbnail="pic2 || '../../assets/images/upload.png'" ngf-select ng-model="pic2" name="imgs" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" class="upload-pic">
+        <img ngf-thumbnail="pic3 || '../../assets/images/upload.png'" ngf-select ng-model="pic3" name="imgs" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" class="upload-pic"> -->
+        <div class="submit-reply">
+            <input type="submit" class="submit-btn" value="提交申请">
+        </div>
+    </form>
+</div>

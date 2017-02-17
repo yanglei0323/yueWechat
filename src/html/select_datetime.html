@@ -1,0 +1,29 @@
+<div id="datetime-container">
+    <div class="title-bar">
+        <span class="title-bar-left" back>
+            <img src="../../assets/images/back.png">
+        </span>
+        <span>选择时间</span>
+        <span class="title-bar-right">
+            <span id="confirm-btn" ng-click="confirm()">确定</span>
+        </span>
+    </div>
+    <div class="swiper-container" id="select-date-container" date-select>
+        <div class="swiper-wrapper">
+            <div ng-repeat="time in timeArr" on-time-finished ng-click="selectDate(time)" ng-class="{'swiper-slide':true,'item':true,'selected':time.selected}">
+                <span ng-bind="time.week"></span>
+                <span ng-bind="time.date"></span>
+            </div>
+        </div>
+    </div>
+    <div id="select-time-container">
+        <div ng-repeat="status in appointStatusArr" ng-click="selectTime(status)" ng-class="{'item':true,'useful':status.useful,'unuseful':!status.useful}">
+            <span ng-bind="status.time"></span>
+            <span ng-bind="status.status"></span>
+            <img src="../../assets/images/selected_1.png" class="selected-icon" ng-if="status.selected">
+        </div>
+    </div>
+    <div id="yue-icon">
+        <img src="../../assets/images/yue-icon.png">
+    </div>
+</div>

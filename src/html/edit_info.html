@@ -1,0 +1,43 @@
+<div id="edit-info-contenter">
+	<div class="title-bar">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <span>编辑资料</span>
+    </div>
+	<div class="info-head">
+		<div class="head-look">
+			<img ng-src="{{imgurl}}" ng-click="toCompleteInfo()">
+		</div>
+	</div>
+	<div class="info-edit">
+		<div class="info-input">
+			<span>昵称：</span>
+			<span ng-bind="nickname"></span>
+		</div>
+		<div class="info-input">
+			<span>手机：</span>
+			<span ng-bind="phone"></span>
+		</div>
+		<div class="info-input" ng-click="toCompleteInfo()">
+			<span>性别：</span>
+			<span class="right-info">
+				<span ng-bind="sex"></span>
+				<img src="../../assets/images/arrow_r.png" class="arrow">
+			</span>
+		</div>
+		<div class="info-input" ng-click="toCompleteInfo()">
+			<span>生日：</span>
+			<span class="right-info">
+				<span ng-bind="birthday"></span>
+				<img src="../../assets/images/arrow_r.png" class="arrow">
+			</span>
+		</div>
+		<div class="info-input" ng-click="editLoginPwd()">
+			<span>修改登录密码：</span>
+			<img src="../../assets/images/arrow_r.png" class="arrow">
+		</div>
+		<div class="info-input" ng-click="editPayPwd()">
+			<span>修改支付密码：</span>
+			<img src="../../assets/images/arrow_r.png" class="arrow">
+		</div>
+	</div>
+</div>

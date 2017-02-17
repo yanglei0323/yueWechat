@@ -1,0 +1,89 @@
+<!-- 积分商品确认下单 -->
+<div class="parent-container">
+	<div id="point-order-confirm-container">
+		<div class="title-bar">
+		    <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+		    <span>确认订单</span>
+		</div>
+		<div class="point-order-confirm">
+			<div class="deliver-type">
+				<div class="item" >
+					<span class="left" ng-click="chooseReceiveType(1)">
+						<img src="../../assets/images/common_selected.png" class="common-icon" ng-click="" ng-if="type=='address'">
+						<img src="../../assets/images/common_unselected.png" class="common-icon" ng-click="" ng-if="type=='store'">
+					</span>
+					<span class="right" ng-if="hasSite" ng-click="selectAddress(site)">
+						<span class="select-site">
+							<div class="receiver">
+								收货人：<span ng-bind="site.name"></span>
+								<span class="phone" ng-bind="site.telephone"></span>
+							</div>
+							<div class="address">收货地址：<span ng-bind="site.city+site.address"></span></div>				
+						</span>
+						<img src="../../assets/images/arrow_r_big.png" class="common-icon">
+					</span>
+					<span class="right" ng-if="!hasSite" ng-click="selectAddress()">
+						<span class="tips">请填写收货人信息</span>
+						<img src="../../assets/images/arrow_r_big.png" class="common-icon">
+					</span>
+				</div>
+				<div class="item">
+					<span class="left">
+						<img src="../../assets/images/common_selected.png" class="common-icon" ng-click="chooseReceiveType(2)" ng-if="type=='store'">
+						<img src="../../assets/images/common_unselected.png" class="common-icon" ng-click="chooseReceiveType(2)" ng-if="type=='address'">
+					</span>
+					<span class="right" ng-click="selectStore()">
+						<span class="tips">门店自取</span>
+						<span >
+							<span ng-bind="selectedStore.name"></span>
+							<img src="../../assets/images/arrow_r_big.png" class="common-icon">
+						</span>
+					</span>
+				</div>
+			</div>
+			<div class="order-info">
+				<div class="goods-info" ng-repeat="goods in goodsArr">
+					<span class="left">
+						<img ng-src="{{goods.imgurl}}" class="goods-icon">
+					</span>
+					<span class="right">
+						<span class="name" ng-bind="goods.name"></span>
+						<span class="price">
+							<span class="highlight">￥ <span ng-bind="goods.price"></span></span>
+							<span>X <span ng-bind="goods.buyNum"></span></span>
+						</span>
+					</span>
+				</div>
+				<div class="freight">
+					<span>运费:</span>
+					<span class="freight-num">￥<span ng-bind="freight"></span></span>
+				</div>
+				<div class="message-container">
+					<span class="title">买家留言：</span>
+					<span class="message">
+						<textarea placeholder="选填，填写您和卖家达成一致的信息..." ng-model="remark"></textarea>
+					</span>
+					<span class="count-info">
+						<span>共<span ng-bind="buyNum"></span>件商品 合计:</span>
+						<span class="highlight">￥<span ng-bind="totalPrice"></span></span>
+					</span>
+				</div>
+			</div>
+			<div class="coupon-container" ng-click="selectCoupon()">
+				<span>使用代金券</span>
+				<span class="coupon">
+					<span ng-bind="couponInfo"></span>
+					<img src="../../assets/images/arrow_r_big.png" class="common-icon">
+				</span>
+			</div>
+		</div>
+
+		<div class="operation">
+			<span class="left">
+				<span>实付：</span>
+				<span class="highlight">￥<span ng-bind="totalPrice"></span></span>
+			</span>
+			<span class="right" ng-click="orderConfirm()">确定</span>
+		</div>
+	</div>
+</div>

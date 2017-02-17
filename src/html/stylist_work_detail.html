@@ -1,0 +1,19 @@
+<div class="stylist-work-container">
+    <div class="title-bar">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <span ng-bind="title" class="title ellipsis"></span>
+    </div>
+    <!-- 发型师作品 -->
+    <div infinite-scroll="getWorks()" infinite-scroll-disabled="workLoading" infinite-scroll-distance="1">
+        <div class="work-container">
+            <span class="item" ng-repeat="work in workPicList">
+                <img ng-src="{{work.imgurl}}">
+            </span>
+        </div>
+        <div ng-show="workLoading && !workLoaded" class="load">正在加载...</div>
+        <div ng-show="workLoaded" class="load"></i>没有更多了</div>  
+    </div>
+    <!-- <div class="pic-item" ng-repeat="item in workPicList">
+        <img ng-src="{{item.imgurl}}">
+    </div> -->
+</div>

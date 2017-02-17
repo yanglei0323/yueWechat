@@ -1,0 +1,85 @@
+<div class="parent-container">
+<div id="coupon-container">
+<div class="title-bar">
+    <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+    <span>优惠券</span>
+</div>
+<div class="head">
+    <span ng-class="{true: 'selected', false: 'unselected'}[unused]" ng-click="selectCoupon(1)">未使用</span>
+    <span ng-class="{true: 'selected', false: 'unselected'}[used]" ng-click="selectCoupon(2)">已使用</span>
+    <span ng-class="{true: 'selected', false: 'unselected'}[expired]" ng-click="selectCoupon(3)">已过期</span>
+</div>
+<div class="coupon-list" ng-if="unused">
+    <div class="coupon-item unused-item" ng-repeat="coupon in unusedList">
+        <span class="left-panel">
+            <span class="left">
+                <span class="type">
+                    <img ng-src="{{coupon.typePic}}">
+                </span>
+                <span>
+                    <img src="../../assets/images/money.png" class="money">
+                </span>
+            </span>
+            <span class="middle-panel">
+                <span>{{coupon.price}}</span>
+            </span>
+        </span>
+        <span class="right-panel">
+            <span class="font-1">{{coupon.typeText}}</span>
+            <span class="rule">{{coupon.rule}}</span>
+            <span class="font-1">{{coupon.starttime}}~{{coupon.endtime}}</span>
+        </span>
+    </div>
+    <div class="empty-tips" ng-if="noUnused">暂无相关优惠券！</div>
+</div>
+<div class="coupon-list" ng-if="used">
+    <div class="coupon-item used-item" ng-repeat="coupon in usedList">
+        <img src="../../assets/images/used.png" alt="已使用" class="tip-img">
+        <span class="left-panel">
+            <span class="left">
+                <span class="type">
+                    <img ng-src="{{coupon.typePic}}">
+                </span>
+                <span>
+                    <img src="../../assets/images/money_grey.png" class="money">
+                </span>
+            </span>
+            <span class="middle-panel color-used">
+                <span>{{coupon.price}}</span>
+            </span>
+        </span>
+        <span class="right-panel">
+            <span class="font-1">{{coupon.typeText}}</span>
+            <span class="rule">{{coupon.rule}}</span>
+            <span class="font-1">{{coupon.starttime}}~{{coupon.endtime}}</span>
+        </span>
+    </div>
+    <div class="empty-tips" ng-if="noUsed">暂无相关优惠券！</div>
+</div>
+<div class="coupon-list" ng-if="expired">
+    <div class="coupon-item expired-item" ng-repeat="coupon in expiredList">
+        <img src="../../assets/images/expired.png" alt="已过期" class="tip-img">
+        <span class="left-panel">
+            <span class="left">
+                <span class="type">
+                    <img ng-src="{{coupon.typePic}}">
+                </span>
+                <span>
+                    <img src="../../assets/images/money_grey.png" class="money">
+                </span>
+            </span>
+            <span class="middle-panel color-used">
+                <span>{{coupon.price}}</span>
+            </span>
+        </span>
+        
+        <span class="right-panel">
+            <span class="font-1">{{coupon.typeText}}</span>
+            <span class="rule">{{coupon.rule}}</span>
+            <span class="font-1">{{coupon.starttime}}~{{coupon.endtime}}</span>
+        </span>
+    </div>
+    <div class="empty-tips" ng-if="noExpired">暂无相关优惠券！</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,69 @@
+<!-- 发型师评价 -->
+<div id="stylist-comment-container">
+    <div class="title-bar">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <span>全部评价</span>
+    </div>
+    <div class="stylist-comment">
+        <div class="expression">
+            <div class="title">
+                <span>顾客印象</span>
+            </div>
+            <div class="expression-list">
+                <span class="item" ng-repeat="remark in remarkList">
+                    <span ng-bind="remark.name"></span>
+                    (<span ng-bind="remark.num"></span>)
+                </span>
+            </div>
+        </div>
+        <div class="tab-container">
+            <span ng-class="{'tab-item':true,'selected':isAll}" ng-click="getCommentList('all')">
+                <span>全部</span>
+                <span class="num">(<span ng-bind="statistic.all"></span>)</span>
+            </span>
+            <span ng-class="{'tab-item':true,'selected':isPerfect}" ng-click="getCommentList('perfect')">
+                <span>超预期</span>
+                <span class="num">(<span ng-bind="statistic.perfect"></span>)</span>
+            </span>
+            <span ng-class="{'tab-item':true,'selected':isGood}" ng-click="getCommentList('good')">
+                <span>满意</span>
+                <span class="num">(<span ng-bind="statistic.good"></span>)</span>
+            </span>
+            <span ng-class="{'tab-item':true,'selected':isBad}" ng-click="getCommentList('bad')">
+                <span>不满意</span>
+                <span class="num">(<span ng-bind="statistic.bad"></span>)</span>
+            </span>
+            <span ng-class="{'tab-item':true,'selected':isPic}" ng-click="getCommentList('pic')">
+                <span>晒图</span>
+                <span class="num">(<span ng-bind="statistic.pic"></span>)</span>
+            </span>
+        </div>
+        <div class="comment-item" ng-repeat="comment in commentList">
+            <img ng-src="{{comment.user.imgurl}}" class="user-img">
+            <div class="comment-info">
+                <div class="comment-user-info">
+                    <div>
+                        <span ng-bind="comment.user.name"></span>
+                        <img ng-src="{{comment.user.vipimgurl}}" class="vip-icon">
+                    </div>
+                    <div>
+                        <img ng-repeat="star in comment.starUrl" ng-src="{{star.path}}" class="star-icon">
+                    </div>
+                </div>
+                <div class="comment-tag" ng-if="comment.remarkList.length > 0">
+                    <div class="expression-list">
+                        <span class="item" ng-repeat="remark in comment.remarkList">
+                            <span ng-bind="remark.name"></span>
+                        </span>
+                    </div>
+                </div>
+                <div ng-bind="comment.content" class="comment-content"></div>
+                <div class="comment-img">
+                    <img ng-repeat="img in comment.imgArr" ng-src="{{img.path}}">
+                </div>
+                <div ng-bind="comment.time" class="comment-time"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

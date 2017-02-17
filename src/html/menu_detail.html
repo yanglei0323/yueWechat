@@ -1,0 +1,70 @@
+<div id="mall-container">
+    <div class="title-bar">
+        <span class="title-bar-left">
+            <span class="title-bar-left" ng-click="tback()"><img src="../../assets/images/back.png"></span>
+        </span>
+        <span ng-bind="title"></span>
+    </div>
+    <div class="select-panel">
+        <span class="item" ng-click="setSort('hot')">
+            <span>
+                <img src="../../assets/images/rexiao.png" ng-show="!type=='hot'">
+                <img src="../../assets/images/rexiao_h.png" ng-show="type=='hot'">
+            </span>
+            <span ng-class="{'highlight':type=='hot'}">热销</span>
+        </span>
+        <span class="item" ng-click="setSort('new')">
+            <span>
+                <img src="../../assets/images/zuixin.png" ng-hide="type=='new'">
+                <img src="../../assets/images/zuixin_h.png" ng-show="type=='new'">
+            </span>
+            <span ng-class="{'highlight':type=='new'}">最新</span>
+        </span>
+        <span class="item" ng-click="setSort('popular')">
+            <span>
+                <img src="../../assets/images/renqi.png" ng-hide="type=='popular'">
+                <img src="../../assets/images/renqi_h.png" ng-show="type=='popular'">
+            </span>
+            <span ng-class="{'highlight':type=='popular'}">人气</span>
+        </span>
+        <span class="item" ng-click="setSort('priceasc')" ng-hide="type=='pricedesc' || type=='priceasc'">
+            <span>
+                <img src="../../assets/images/jiage.png" >
+            </span>
+            <span>价格</span>
+        </span>
+        <span class="item" ng-click="setSort('pricedesc')" ng-show="type=='priceasc'">
+            <span>
+                <img src="../../assets/images/bottom_to_top.png">
+            </span>
+            <span class="highlight">价格</span>
+        </span>
+        <span class="item" ng-click="setSort('priceasc')" ng-show="type=='pricedesc'">
+            <span>
+                <img src="../../assets/images/top_to_bottom.png">
+            </span>
+            <span class="highlight">价格</span>
+        </span>
+    </div>
+    <div infinite-scroll="getGoods()" infinite-scroll-disabled="loading" infinite-scroll-distance="0">
+        <div class="goods-container">
+            <span class="item" ng-repeat="item in goodsList" ng-click="toGoodsDetail(item)">
+                <span><img ng-src="{{item.imgurl}}" class="goods-img"></span>
+                <span class="goods-name" ng-bind="item.name"></span>
+                <span class="goods-info">
+                    <span>￥<span ng-bind="item.realprice"></span></span>
+                    <span class="praise" ng-click="praise(item, $event)">
+                        <span class="glyphicon glyphicon-heart-empty" ng-if="!item.iskeep" name="praise-icon"></span>
+                        <span class="glyphicon glyphicon-heart highlight" ng-if="item.iskeep" name="praise-icon"></span>
+                        <span ng-bind="item.praisenum"></span>
+                    </span>
+                </span>
+            </span>
+        </div>
+        <div ng-hide="loaded" class="load">
+            <img src="../../assets/images/loading2.gif" class="common-icon">
+            正在加载...
+        </div>
+        <div ng-show="loaded" class="load"></i>没有更多内容</div>
+    </div>
+</div>

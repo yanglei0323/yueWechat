@@ -1,0 +1,425 @@
+* {
+  	margin: 0;
+  	padding: 0;
+  	font-family: "Microsoft YaHei";
+  	box-sizing: border-box;
+  	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	-o-box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    // background-color: #f1f1f1;
+}
+a {
+  text-decoration: none;
+  color:#c0a97a !important;
+}
+a:hover{
+  text-decoration: none;
+}
+input {
+  	background: none;
+  	border: none;
+}
+
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.title-bar {
+  	text-align: center;
+  	border-bottom: 1px solid #b2b2b2;
+  	height: 1.2rem;
+  	line-height: 1.2rem;
+  	font-size: 0.48rem;
+  	color: #121212;
+  	background-color: #fafafa;
+    position: relative;
+    .down-icon {
+      display: inline-block;
+      img {
+        margin-top: -0.16rem;
+      }
+    }
+    .title-bar-left {
+        position: absolute;
+        height: 100%;
+        left: 0;
+        display: -moz-box; 
+        display: -ms-flexbox;
+        display:box;
+        display: -webkit-box;
+        display: flex;
+        display: -webkit-flex;
+        -moz-align-items:center;
+        -ms-align-items:center;
+        -o-align-items:center;
+        align-items:center;
+        -webkit-align-items:center;
+        margin-left: 0.133333rem;
+        .text {
+          font-size: 0.4rem;
+          color: #121212;
+          margin-left: 0.266667rem;
+          max-width: 2.4rem;
+        }
+        img {
+          height: 0.586667rem;
+          width: 0.586667rem;
+        }
+    }
+    .title-bar-right {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        right: 0.2rem;
+        display: -moz-box; 
+        display: -ms-flexbox;
+        display:box;
+        display: -webkit-box;
+        display: flex;
+        display: -webkit-flex;
+        -moz-align-items:center;
+        -ms-align-items:center;
+        -o-align-items:center;
+        align-items:center;
+        -webkit-align-items:center;
+        img {
+          width: 0.586667rem;
+          height: 0.586667rem;
+        }
+        .switch,
+        .cart-icon,
+        .share-icon {
+          margin-left: 0.2rem;
+        }
+        .refresh-icon {
+          color: #666666;
+          margin-right: 0.2rem;
+        }
+        a {
+          color: #666666;
+          font-size: 0.373333rem;
+        }
+    }
+}
+
+/*搜索界面的titlebar*/
+.search-title-bar {
+  height: 1.2rem;
+  font-size: 0.32rem;
+  color: #121212;
+  background-color: #f1f1f1;
+  display: -moz-box; 
+  display: -ms-flexbox;
+  display:box;
+  display: -webkit-box;
+  display: flex;
+  display: -webkit-flex;
+  -moz-align-items:center;
+  -ms-align-items:center;
+  -o-align-items:center;
+  align-items:center;
+  -webkit-align-items:center;
+  padding: 0 0.266667rem;
+  form {
+    -webkit-box-flex: 1 ;     
+    -moz-box-flex: 1;        
+    -ms-flex: 1;            
+    flex: 1;
+    -webkit-flex: 1; 
+    input[type="search"] {
+      width: 100%;
+    }
+  }
+  .search-box {
+    width: 8.6rem;
+    height: 0.666667rem;
+    border: 0.013333rem solid #121212;
+    border-radius: 0.133333rem;
+    display: -moz-box; 
+    display: -ms-flexbox;
+    display:box;
+    display: -webkit-box;
+    display: flex;
+    display: -webkit-flex;
+    -moz-align-items:center;
+    -ms-align-items:center;
+    -o-align-items:center;
+    align-items:center;
+    -webkit-align-items:center;
+    line-height: 0.666667rem;
+    
+
+  }
+  .cancel-btn {
+    margin-left: 0.2rem;
+  }
+}
+
+.border-bottom-none {
+  	border-bottom: none !important;
+}
+.highlight {
+  color: #333333 !important;
+}
+
+.highlight-2 {
+  color: #d1b984;
+}
+
+.padding-left-right-none {
+  padding-left :0 !important;
+  padding-right: 0 !important;
+}
+
+// 确认等按钮的颜色
+.btn-bg {
+  background-color: #c0a97a;   
+
+}
+
+// 星星图标长宽
+.star-icon {
+  width: 0.346667rem;
+  height: 0.346667rem;
+}
+
+.star-icon-2 {
+  width: 0.373333rem;
+  height: 0.373333rem;
+}
+// 赞图标长宽
+.zan-icon {
+  height: 0.586667rem;
+  width: 0.586667rem;
+}
+// 地址图标长宽
+.location-icon {
+  height: 0.27rem;
+  width: 0.2rem;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 0.266667rem;
+}
+
+.common-icon {
+  height: 0.4rem !important;
+  width: 0.4rem !important;
+}
+
+// 首页底部导航
+.bottom-nav {
+    z-index: 100;
+    position: fixed;
+    background-color: #fafafa;
+    bottom: 0;
+    width: 100%;
+    height: 1.306667rem;
+    border-top: 0.013333rem solid #aeaeae;
+    display: -moz-box; 
+    display: -ms-flexbox;
+    display:box;
+    display: -webkit-box;
+    display: flex;
+    display: -webkit-flex;
+    -moz-align-items:center;
+    -ms-align-items:center;
+    -o-align-items:center;
+    align-items:center;
+    -webkit-align-items:center;
+    -moz-justify-content: space-around;
+    -ms-justify-content: space-around;
+    -o-justify-content: space-around;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+    .item {
+      display: -moz-box; 
+        display: -ms-flexbox;
+        display:box;
+        display: -webkit-box;
+        display: flex;
+        display: -webkit-flex;
+        -moz-align-items:center;
+        -ms-align-items:center;
+        -o-align-items:center;
+        align-items:center;
+        -webkit-align-items:center;
+        -moz-flex-direction:column;
+        -ms-flex-direction:column;
+        -o-flex-direction:column; 
+        flex-direction:column; 
+        -webkit-flex-direction:column;
+      img {
+        height: 0.486667rem;
+        width: 0.486667rem;
+      }
+      .text {
+        margin-top: 0.08rem;
+        font-size: 0.27rem;
+        color: #929292;
+      }
+    }
+  }
+.parent-container {
+  background-color: #f1f1f1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.bg-black {
+  background-color: #000000;
+}
+
+.text-highlight {
+  color: #c0a97a !important;
+}
+.bg-highlight {
+  background:#c0a97a !important;
+}
+.labelbg-highlight {
+  background:#c0a97a !important;
+  opacity:0.8 !important;
+}
+
+// 轮播图样式调整
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 0 0.12rem;
+}
+.swiper-pagination-bullet {
+  width: 0.16rem;
+  height: 0.16rem;
+  display: inline-block;
+  border-radius: 100%;
+  background: #000;
+  opacity: .5;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #c0a97a;
+}
+
+.praise-icon {
+  font-size: 0.5rem;
+}
+.praised {
+  color: #c0a97a;
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ellipsis-2-line {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.vip-icon {
+  width: 0.36rem;
+  height: 0.24rem;
+}
+
+.load {
+  height: 0.8rem;
+  line-height: 0.8rem;
+  text-align: center;
+  font-size: 0.32rem;
+  color: #333333;
+  width: 4.8rem;
+  // margin-top: 0.266667rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.newload{
+  width:100%;
+  // margin-top: 0.266667rem;
+  margin:-0.8rem auto 0;
+  background:#f1f1f1;
+  position:fixed;
+  div{
+    margin:2rem auto 5rem;
+    width:2.67rem;
+  }
+  img{
+    width:2.67rem;
+    height:2.67rem;
+  }
+  
+}
+.visibility-hide {
+  visibility: hidden;
+}
+
+.whole-width {
+  width: 100%;
+}
+
+.none-border-radius {
+  border-radius: 0 !important;
+}
+
+.position-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.margin-top-none {
+  margin-top: 0 !important;
+}
+
+.yue-logo {
+  height: 2.56rem;
+  width: 3.48rem;
+}
+
+.padding-bottom-none {
+  padding-bottom: 0 !important;
+}
+
+.font-color-3 {
+  color: #333333;
+}
+.font-color-9 {
+  color: #999999;
+}
+
+.font-color-white {
+  color: #ffffff;
+}
+
+.font-size-24 {
+  font-size: 0.32rem;
+}
+
+.font-size-26 {
+  font-size: 0.346667rem;
+}
+
+.font-size-28 {
+  font-size: 0.373333rem;
+}
+
+.font-size-30 {
+  font-size: 0.4rem;
+}
+
+.font-size-32 {
+  font-size: 0.426667rem;
+}
+
+.font-size-36 {
+  font-size: 0.48rem;
+}
+

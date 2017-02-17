@@ -1,0 +1,111 @@
+<div class="parent-container">
+	<div id="home-search">
+		<div class="search-title-bar">
+			<span class="search-box">
+				<img src="../../assets/images/search_1.png" alt="搜索图标" class="common-icon">
+				<form ng-submit="search()">
+					<input type="search" placeholder="请输入设计师名称/商品名称" ng-model="keyword">
+				</form>
+				
+			</span>
+			<span class="cancel-btn" back>取消</span>
+		</div>
+		<!-- 服务过的造型师 -->
+		<div class="item-container" ng-if="orderdesigner.length > 0">
+			<div class="type-name">为您服务过的发型师</div>
+			<div class="item" ng-repeat="designer in orderdesigner" ng-click="toDesignerDetail(designer)">
+				<img ng-src="{{designer.avatar}}" class="designer-head-pic">
+				<div class="newdesign" style="position:relative;">
+					<div class="dsdiv-1">
+						<span ng-bind="designer.name"></span>&nbsp;|&nbsp;<span ng-bind="designer.jobtitle"></span>
+					</div>
+					<div class="dsdiv-2">
+						<img ng-repeat="star in designer.starUrl" ng-src="{{star.path}}" class="star-icon">
+					</div>
+					<div class="dsdiv-3">
+						共接单<span ng-bind="designer.ordernum"></span>次
+					</div>
+					<div class="dsdiv-4">
+						剪发：<span class="dsjf">
+							￥<span ng-bind="designer.cutmoney"></span>
+						</span>
+					</div>
+					<div class="dsdiv-5">
+						<span class="bottom text-right">
+							<img src="../../assets/images/location.png" class="location-icon">
+							<span ng-bind="designer.store.name"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 发型师 -->
+		<div class="item-container" ng-if="designerList.length > 0">
+			<div class="type-name">造型师</div>
+			<div class="item" ng-repeat="designer in designerList" ng-click="toDesignerDetail(designer)">
+				<img ng-src="{{designer.avatar}}" class="designer-head-pic">
+				<div class="newdesign" style="position:relative;">
+					<div class="dsdiv-1">
+						<span ng-bind="designer.name"></span>&nbsp;|&nbsp;<span ng-bind="designer.jobtitle"></span>
+					</div>
+					<div class="dsdiv-2">
+						<img ng-repeat="star in designer.starUrl" ng-src="{{star.path}}" class="star-icon">
+					</div>
+					<div class="dsdiv-3">
+						共接单<span ng-bind="designer.ordernum"></span>次
+					</div>
+					<div class="dsdiv-4">
+						剪发：<span class="dsjf">
+							￥<span ng-bind="designer.cutmoney"></span>
+						</span>
+					</div>
+					<div class="dsdiv-5">
+						<span class="bottom text-right">
+							<img src="../../assets/images/location.png" class="location-icon">
+							<span ng-bind="designer.store.name"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 门店 -->
+		<div class="item-container" ng-if="storeList.length > 0">
+			<div class="type-name">门店</div>
+			<div class="item" ng-repeat="store in storeList" ng-click="toStoreDetail(store)">
+				<img ng-src="{{store.img}}" class="store-pic">
+				<div class="info">
+					<span class="price">
+						￥<span ng-bind="store.average"></span>
+					</span>
+					<span class="middle">
+						<span ng-bind="store.name" class="name"></span>
+						<img ng-repeat="star in store.starUrl" ng-src="{{star.path}}" class="star-icon">
+					</span>
+					<span class="bottom text-right">
+						<img src="../../assets/images/location.png" class="location-icon">
+						<span ng-bind="store.location"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!-- 热门商品 -->
+		<div class="item-container" ng-if="goodsList.length > 0">
+			<div class="type-name">商品</div>
+			<div class="item newgood" ng-repeat="goods in goodsList" ng-click="toGoodsDetail(goods)">
+				<img ng-src="{{goods.img}}" class="goods-pic">
+				<div class="info">
+					
+					<span class="middle">
+						<span ng-bind="goods.name" class="name"></span>
+						<span class="price">
+						￥<span ng-bind="goods.realprice"></span>
+					</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-if="hasNoResult" class="text-center">
+		<div class="nothingDiv"><img src="../../assets/images/box.png" alt=""></div><!-- <span class="nothingText">抱歉！没有找到您想要的结果</span> -->
+	</div>
+</div>

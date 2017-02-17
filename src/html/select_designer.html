@@ -1,0 +1,32 @@
+<!-- 发型师 -->
+<div class="title-bar">
+    <span class="title-bar-left">
+        <span class="title-bar-left" ng-click="tback()"><img src="../../assets/images/back.png"></span>
+    </span>
+    <span>选择发型师</span>
+</div>
+<div id="stylist" class="padding-bottom-none">
+	<div class="grid-container">
+		<div infinite-scroll="getDesignerInfo()" infinite-scroll-disabled="loading" infinite-scroll-distance="0">
+			<div class="item-container">
+				<div class="item" ng-repeat="designer in designerList" ng-click="selectDesigner(designer)">
+					<img ng-src="{{designer.imgurl}}">
+					<div class="info">
+						<span ng-bind="designer.name" class="name"></span>
+						<div class="bottom-info">
+							<span ng-bind="designer.store.name"></span>
+							<span>
+								<span ng-bind="designer.ordernum"></span> 单
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-hide="loaded" class="load">
+				<img src="../../assets/images/loading2.gif" class="common-icon">
+				正在加载...
+			</div>
+            <div ng-show="loaded" class="load"></i>没有更多内容</div>
+		</div>
+	</div>
+</div>

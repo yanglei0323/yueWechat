@@ -1,0 +1,25 @@
+<div id="coin-mall-container">
+    <div class="title-bar bg-white">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <span>悦币商城</span>
+        <span class="title-bar-right" id="change-record" ng-click="toChangeRecord()">兑换记录</span>
+    </div>
+    <div class="coin-num">
+        <img src="../../assets/images/coin_2.png" class="common-icon">
+        <span ng-bind="coin + ' 悦币'"></span>
+    </div>
+    <div id="goods-container">
+        <div infinite-scroll="getGoods()" infinite-scroll-disabled="loading" infinite-scroll-distance="0">
+            <div class="item-container">
+                <div class="item" ng-repeat="goods in goodsList" ng-click="toGoods(goods)">
+                    <img ng-src="{{goods.imgurl}}">
+                </div>
+            </div>
+            <div class="load" ng-hide="loaded">
+                <img src="../../assets/images/loading2.gif" class="common-icon">
+                正在加载...
+            </div>
+            <div ng-show="loaded" class="load"></i>没有更多内容</div>
+        </div>
+    </div>
+</div>

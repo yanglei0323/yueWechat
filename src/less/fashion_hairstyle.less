@@ -1,0 +1,96 @@
+@import "display";
+#fashion-hairstyle {
+	background-color: #f1f1f1;
+	.hairstyle-nav {
+		height: 1.066667rem;
+		background-color: #f1f1f1;
+		.flex;
+		-moz-justify-content: space-around;
+		-ms-justify-content: space-around;
+		-o-justify-content: space-around;
+		justify-content: space-around;
+		-webkit-justify-content: space-around;
+		-moz-align-items:center;
+		-ms-align-items:center;
+		-o-align-items:center;
+		align-items:center;
+		-webkit-align-items:center;
+		.item {
+			.flex;
+			-moz-align-items:center;
+			-ms-align-items:center;
+			-o-align-items:center;
+			align-items:center;
+			-webkit-align-items:center;
+			img {
+				height: 0.506667rem;
+				width: 0.506667rem;
+			}
+			.text {
+				margin-left: 0.066667rem;
+				font-size: 0.4rem;
+				color: #121212;
+			}
+		}
+	}
+	.hairstyle-content {
+		background-color: #ffffff;
+		.flex;
+		-moz-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		-o-flex-wrap: wrap;
+		flex-wrap:wrap;
+		-webkit-flex-wrap: wrap;
+		padding-bottom: 0.266667rem;
+		img {
+			width: 4.6rem;
+			height: 6.813333rem;
+			border-radius: 0.133333rem;
+			margin-top: 0.266667rem;
+			margin-left: 0.266667rem;
+		}
+	}
+	.item-container {
+		.flex-column;
+		-moz-justify-content: center;
+		-ms-justify-content: center;
+		-o-justify-content: center;
+		justify-content: center;
+		-webkit-justify-content: center;
+		-moz-align-items:center;
+		-ms-align-items:center;
+		-o-align-items:center;
+		align-items:center;
+		-webkit-align-items:center;
+		padding-top: 0.266667rem;
+		background-color: #ffffff;
+		.grid-item:not(:last-child) {
+			margin-bottom: 0.266667rem;
+			position: relative;
+		}
+		.grid-item {
+			margin-bottom: 0.266667rem;
+			position: relative;
+			.store-img {
+				height: auto;
+				width: 9.466667rem;
+				border-radius: 0.133333rem;
+			}
+			.store-info-mask {
+				position: absolute;
+				background: rgba(0, 0, 0, 0.1);
+				height: 100%;
+				width: 100%;
+				top: 0;
+				left: 0;
+				border-radius: 0.133333rem;
+				.flex-center;
+				.store-name {
+					font-size: 0.48rem;
+					color: #f6f9f9;
+					text-align: center;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+<div class="title-bar bg-white">
+    <span class="title-bar-left" back>
+        <img src="../../assets/images/back.png">
+    </span>
+    <span>余额记录</span>
+</div>
+<div id="balance-record">
+	<div class="tab-container">
+		<div ng-class="{'item':true,'selected':isConsume}" ng-click="select(0)">
+			消费记录
+		</div>
+		<div ng-class="{'item':true,'selected':!isConsume}" ng-click="select(1)">
+			余额记录
+		</div>
+	</div>
+	<div ng-show="isConsume&&hasNoRecord" class="no-record-text">暂无消费记录</div>
+	<div ng-show="!isConsume&&hasNoRecord" class="no-record-text">暂无充值记录</div>
+	<div infinite-scroll="getRecordList()" infinite-scroll-disabled="loading" infinite-scroll-distance="0">
+		<div class="list-item" ng-repeat="item in recordList">
+			<span ng-bind="item.message"></span>
+		</div>
+		<div class="load" ng-hide="loaded">
+			<img src="../../assets/images/loading2.gif" class="common-icon">
+			正在加载...
+		</div>
+        <div ng-show="loaded&&!hasNoRecord" class="load"></i>没有更多内容</div>
+	</div>
+</div>   

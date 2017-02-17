@@ -1,0 +1,146 @@
+<!-- 积分商品详情 -->
+<div id="mall-goods-detail">
+	<img src="../../assets/images/back_2.png" class="back common-icon" ng-click="tback()">
+	<img src="../../assets/images/cart_2.png" class="share common-icon" ng-click="toCart()">
+	<!-- <img src="../../assets/images/share_3.png" class="share common-icon"> -->
+	<div class="info-container">
+		<div advertise class="swiper-container goods-pic-container">
+	        <div class="swiper-wrapper">
+	        	
+	            <div class="swiper-slide goods-pic" ng-repeat="item in goods.imgarray" on-finish-render-filters>
+	                <img ng-src="{{item.imgurl}}" class="goods-pic">
+	            </div>
+	        </div>
+	        <div class="swiper-pagination"></div>
+	    </div>
+		<div class="goods-info">
+			<span class="item name">
+				<span ng-bind="goods.name" class="goods-name ellipsis"></span>
+				<span class="praise">
+					<span class="glyphicon glyphicon-heart-empty praise-icon" 
+					ng-if="!goods.iskeep" ng-click="praiseOperation(1)"></span>
+					<span class="glyphicon glyphicon-heart praise-icon praised" 
+					ng-if="goods.iskeep" ng-click="praiseOperation(2)"></span>
+					<span ng-bind="goods.praisenum" class="praise-num"></span>
+				</span>
+			</span>
+			<span class="item intro" ng-bind="goods.info">
+			</span>
+			<span class="item price">
+				<span class="highlight">￥<span ng-bind="goods.realprice"></span></span>
+				<span ng-if="!isFlash">会员价：<span class="highlight">￥<span ng-bind="goods.vipprice"></span></span></span>
+				<del ng-if="isFlash">￥<span ng-bind="goods.originalprice"></span></del>
+			</span>
+			<del class="item original-price" ng-if="!isFlash">
+				￥<span ng-bind="goods.originalprice"></span>
+			</del>
+			<span class="item rate">
+				<hr>
+				<span class="rate-text">好评率 <span ng-bind="goods.favorablerate"></span></span>
+				<hr>
+			</span>
+			<span class="item other-info">
+				<span>销量<span ng-bind="goods.salenum"></span>件</span>
+				<span>喜欢<span ng-bind="goods.praisenum"></span>件</span>
+				<span>库存<span ng-bind="goods.inventory"></span>件</span>
+			</span>
+		</div>
+		<div class="guarantee" ng-click="toGuarantee()">
+			<span>悦艺术家保障</span>
+			<img src="../../assets/images/arrow_r_big.png" class="common-icon">
+		</div>
+		<div class="goods-detail" ng-click="goodsDetail(goods)">
+			<span>商品详情</span>
+			<span class="right-panel">
+				<img src="../../assets/images/arrow_r_big.png" class="common-icon">
+			</span>
+		</div>
+		<!-- 商品点评 -->
+		<div class="comment-container">
+			<div class="comment-title-bar">
+				<span class="title">商品点评</span>
+				<!-- 评论统计信息 -->
+				<span class="comment-statistics">
+					<img src="../../assets/images/msg.png" class="common-icon">
+					<span><span ng-bind="commentInfo.imgcommentnum"></span>条带图评论</span>
+					<span><span ng-bind="commentInfo.totalCommentnum"></span>条评论</span>
+					<img src="../../assets/images/arrow_r_big.png" class="common-icon">
+				</span>
+			</div>
+			<div class="comment-item" ng-if="commentInfo.totalCommentnum > 0">
+				<img ng-src="{{commentInfo.userImg}}" class="user-img">
+				<div class="comment-info">
+					<div class="comment-user-info">
+						<div>
+							<span ng-bind="commentInfo.comment.user.name"></span>
+							<img ng-src="{{commentInfo.userVipImg}}" class="vip-icon">
+						</div>
+						<div>
+							<img ng-repeat="star in commentInfo.starUrl" ng-src="{{star.path}}" class="star-icon-2">
+						</div>
+					</div>
+					<div ng-bind="commentInfo.comment.time" class="comment-time"></div>
+					<div ng-bind="commentInfo.comment.content" class="comment-content"></div>
+					<div class="comment-img">
+						<img ng-repeat="img in commentInfo.imgArr" ng-src="{{img.path}}">
+					</div>
+				</div>
+
+			</div>
+			<div class="comment-btn-container" ng-if="commentInfo.totalCommentnum > 0">
+				<span class="comment-btn" ng-click="toGoodsComment()">
+					全部评价(<span ng-bind="commentInfo.totalCommentnum"></span>)
+				</span>
+				<span class="comment-btn">
+					带图评价(<span ng-bind="commentInfo.imgcommentnum"></span>)
+				</span>
+			</div>
+		</div>
+
+		<div class="swiper-container hot-sale-recommend" hotsale>
+			<div class="title-bar"><span>热销推荐</span></div>
+			<div class="swiper-wrapper">
+				<div class="swiper-slide item" ng-repeat="item in hotSaleGoods" 
+				on-hot-sale-finished ng-click="toGoodsDetail(item)">
+					<img ng-src="{{item.imgurl}}">
+					<span ng-bind="item.name" class="name"></span>
+					<span class="bottom-info">
+						<span class="highlight">￥<span ng-bind="item.realprice"></span></span>
+						<del>￥<span ng-bind="item.originalprice"></span></del>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="operation">
+		<span class="item add-cart" ng-click="addToCart()">加入购物车</span>
+		<span class="item buy" ng-click="buy()">立即购买</span>
+	</div>
+</div>
+<!-- 购买信息 -->
+<div class="buy-container" forbid-scroll ng-show="isBuy">
+	<div class="buy-info">
+		<img src="../../assets/images/cancel.png" class="cancel-btn" ng-click="cancelBuy()">
+		<div class="flex">
+			<img ng-repeat="item in goods.imgarray | limitTo:1" ng-src="{{item.imgurl}}" class="buy-img">
+			<span class="info">
+				<span ng-bind="goods.name"></span>
+				<span class="price">￥<span ng-bind="goods.price"></span></span>
+			</span>
+		</div>
+		<div class="tips">
+			数量
+		</div>
+		<div class="buy-num">
+			<img src="../../assets/images/decrease.png" ng-click="changeBuyNum(1)">
+			<span class="num" ng-bind="buyNum"></span>
+			<img src="../../assets/images/increase.png" ng-click="changeBuyNum(2)">
+			<span class="inventory">
+				库存<span ng-bind="goods.inventory"></span>件
+			</span>
+		</div>
+	</div>
+	<div class="buy-confirm" ng-click="confirmBuy()">
+		确认
+	</div>
+</div>

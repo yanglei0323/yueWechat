@@ -1,0 +1,120 @@
+<div id="mall-container">
+	<div class="title-bar">
+	    <span class="title-bar-left">
+	        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+	    </span>
+	    <span>积分商城</span>
+	    <span class="title-bar-right">
+	        <img src="../../assets/images/search.png" alt="搜索" id="search" ng-click="pointMallSearch()">
+	    </span>
+	</div>
+	<div advertise class="swiper-container advertise">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" ng-repeat="item in adList" on-finish-render-filters>
+				<img ng-src="{{item.imgurl}}" ng-click="jump(item)">
+			</div>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+	<div class="top-nav">
+		<span ng-repeat="menu in menuList">
+			<img ng-src="{{menu.imgurl}}" ng-click="toMenuDetail(menu)">
+		</span>
+	</div>
+	<div class="item-container">
+		<!-- <img src="../../assets/images/more.png" class="more-icon" ng-click="moreFlashSale()"> -->
+		<div class="title">
+			<span class="cn">限时抢购</span>
+			<span class="en">FLASH SALE</span>
+			<span class=time-tips>
+				<span>每日</span>
+				<span class="time" ng-bind="limitStartTime"></span>
+				<span>开始-</span>
+				<span class="time" ng-bind="limitEndTime"></span>
+				<span>截止</span>
+			</span>
+		</div>
+		<div class="swiper-container flash-sale-content" flashsale>
+			<div class="swiper-wrapper">
+				<div class="swiper-slide item" ng-repeat="item in flashSaleList" 
+				on-flash-sale-render-finished ng-click="toGoodsDetail(item)">
+					<img ng-src="{{item.imgurl}}">
+					<span ng-bind="item.name" class="name"></span>
+					<span class="bottom-info">
+						<span class="highlight">￥<span ng-bind="item.realprice"></span></span>
+						<del>￥<span ng-bind="item.originalprice"></span></del>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="item-container">
+		<div class="title">
+			<span class="cn">品牌专区</span>
+			<span class="en">BRAND ZONE</span>
+		</div>
+		<div class="brand-content">
+			<span class="item" ng-repeat="brand in brandList" ng-click="brandDetail(brand)">
+				<img ng-src="{{brand.imgurl}}">
+			</span>
+		</div>
+	</div>
+	<div class="select-panel">
+		<span class="item" ng-click="setSort('hot')">
+			<span>
+				<img src="../../assets/images/rexiao.png" ng-show="!type=='hot'">
+				<img src="../../assets/images/rexiao_h.png" ng-show="type=='hot'">
+			</span>
+			<span ng-class="{'highlight':type=='hot'}">热销</span>
+		</span>
+		<span class="item" ng-click="setSort('new')">
+			<span>
+				<img src="../../assets/images/zuixin.png" ng-hide="type=='new'">
+				<img src="../../assets/images/zuixin_h.png" ng-show="type=='new'">
+			</span>
+			<span ng-class="{'highlight':type=='new'}">最新</span>
+		</span>
+		<span class="item" ng-click="setSort('popular')">
+			<span>
+				<img src="../../assets/images/renqi.png" ng-hide="type=='popular'">
+				<img src="../../assets/images/renqi_h.png" ng-show="type=='popular'">
+			</span>
+			<span ng-class="{'highlight':type=='popular'}">人气</span>
+		</span>
+		<span class="item" ng-click="setSort('priceasc')" ng-hide="type=='pricedesc' || type=='priceasc'">
+			<span>
+				<img src="../../assets/images/jiage.png" >
+			</span>
+			<span>价格</span>
+		</span>
+		<span class="item" ng-click="setSort('pricedesc')" ng-show="type=='priceasc'">
+			<span>
+				<img src="../../assets/images/bottom_to_top.png">
+			</span>
+			<span class="highlight">价格</span>
+		</span>
+		<span class="item" ng-click="setSort('priceasc')" ng-show="type=='pricedesc'">
+			<span>
+				<img src="../../assets/images/top_to_bottom.png">
+			</span>
+			<span class="highlight">价格</span>
+		</span>
+	</div>
+	<div infinite-scroll="getGoods()" infinite-scroll-disabled="loading" infinite-scroll-distance="1">
+		<div class="goods-container">
+			<span class="item" ng-repeat="item in goodsList" ng-click="toGoodsDetail(item)">
+				<span><img ng-src="{{item.imgurl}}" class="goods-img"></span>
+				<span class="goods-name" ng-bind="item.name"></span>
+				<span class="goods-info">
+					<span>￥<span ng-bind="item.realprice"></span> + <span ng-bind="item.integral"></span> 积分</span>
+					<span class="praise">
+						<span><img src="../../assets/images/zan.png"></span>
+						<span ng-bind="item.praisenum"></span>
+					</span>
+				</span>
+			</span>
+		</div>
+		<div ng-show="loading && !loaded" class="load">加载中...</div>
+        <div ng-show="loaded" class="load"></i>没有更多了</div>
+	</div>
+</div>

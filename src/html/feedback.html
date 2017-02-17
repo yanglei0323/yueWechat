@@ -1,0 +1,14 @@
+<div id="feedback-container">
+    <div class="title-bar">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <span>意见反馈</span>
+    </div>
+    <div class="feedback">
+        <span>
+            <textarea id="feedback-text" placeholder="点击输入您的意见或建议!" ng-model="feedback"></textarea>
+        </span>
+        <span id="submit" ng-click="isFeedbackEmpty || submitFeedback()" ng-class="{false: 'enable-submit'}[isFeedbackEmpty]">
+            提交
+        </span>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<!-- 兑换记录详情 -->
+<div id="coin-goods-container">
+    <div class="title-bar bg-white">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <span ng-bind="goods.name" class="goods-name ellipsis"></span>
+    </div>
+    <div advertise class="swiper-container slider-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" ng-repeat="item in goods.imglist" on-finish-render-filters>
+                <img ng-src="{{item.imgurl}}">
+            </div>
+        </div>
+        <div class="swiper-pagination">
+        </div>
+    </div>
+    <div ng-if="goods.type == 3" class="content-container">
+        <div class="goods-price common-height item">
+            <div ng-bind="goods.name" class="goods-name ellipsis"></div>
+            <div class="price-text">
+                <img src="../../assets/images/coin_2.png" class="common-icon">
+                <span ng-bind="goods.integral + '悦币'"></span>
+            </div>
+        </div>
+        <div class="common-height item" ng-click="selectAddress(site)">
+            <div>订单编号：<span ng-bind="goods.id"></span></div>
+        </div>
+        <div class="goods-detail">
+            <p>订单状态：<span ng-bind="goods.state" class="text-orange"></span></p>
+            <p>
+                快递单号：<span ng-bind="goods.expressnum"></span>
+            </p>
+            <p>
+                配送至：<span ng-bind="goods.address"></span>
+            </p>
+        </div>
+    </div>
+    <div ng-if="goods.type == 4" class="content-container">
+        <div class="goods-price common-height item">
+            <div ng-bind="goods.name" class="goods-name ellipsis"></div>
+            <div class="price-text">
+                <img src="../../assets/images/coin_2.png" class="common-icon">
+                <span ng-bind="goods.integral + '悦币'"></span>
+            </div>
+        </div>
+        <div class="common-height item" ng-click="selectAddress(site)">
+            <div>订单编号：<span ng-bind="goods.id"></span></div>
+        </div>
+        <div class="goods-detail">
+            <p>订单状态：<span ng-bind="goods.state" class="text-orange"></span></p>
+            <p>
+                兑换码：<span ng-bind="goods.code"></span>
+            </p>
+        </div>
+    </div>
+    <div ng-if="goods.type == 5" class="content-container">
+        <div class="goods-price common-height item">
+            <div ng-bind="goods.name" class="goods-name ellipsis"></div>
+            <div class="price-text">
+                <img src="../../assets/images/coin_2.png" class="common-icon">
+                <span ng-bind="goods.integral + '悦币'"></span>
+            </div>
+        </div>
+        <div class="common-height item" ng-click="selectAddress(site)">
+            <div>订单编号：<span ng-bind="goods.id"></span></div>
+        </div>
+        <div class="goods-detail">
+            <p>订单状态：<span ng-bind="goods.state" class="text-orange"></span></p>
+            <p>
+                服务门店：<span ng-bind="goods.store"></span>
+            </p>
+        </div>
+    </div>
+</div>

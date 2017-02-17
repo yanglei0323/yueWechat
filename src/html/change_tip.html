@@ -1,0 +1,31 @@
+<div id="pay-result">
+	<div class="title-bar">
+		<span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+		<span ng-bind="title"></span>
+	</div>
+	<div class="change-info-content">
+		<div class="change-background" ng-bind="tips"></div>
+		<div class="change-btn-content">
+			<div class="change-btn">
+				<a ng-href="/webapp/build/html/">返回首页</a>
+			</div>
+			<div class="change-btn">
+				<a ng-click="orderDetail()">查看订单</a>
+			</div>
+		</div>
+		<div class="change-icon">
+			<img src="../../assets/images/dh_07.png">
+		</div>
+	</div>
+	<div class="split-div"></div>
+	<div class="recommendation-title">商品推荐</div>
+	<div class="goods-container">
+		<span class="item" ng-repeat="item in goodsList" ng-click="toGoodsDetail(item)">
+			<span><img ng-src="{{item.imgurl}}" class="goods-img"></span>
+			<span class="goods-name" ng-bind="item.name"></span>
+			<span class="goods-info">
+				<span class="price">￥<span ng-bind="item.realprice"></span></span>
+			</span>
+		</span>
+	</div>
+</div>

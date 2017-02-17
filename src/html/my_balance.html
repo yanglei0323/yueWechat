@@ -1,0 +1,32 @@
+<div class="title-bar bg-white">
+    <span class="title-bar-left" back>
+        <img src="../../assets/images/back.png">
+    </span>
+    <span>我的余额</span>
+    <a href="/webapp/build/html/balance_record">
+	    <span class="title-bar-right font-size-24">余额纪录</span>
+    </a>
+</div>
+<div id="my-balance">
+	<div class="balance-text">
+		我的余额：<span class="highlight"><span ng-bind="balance"></span>元</span>
+	</div>
+	<div class="vip-item" ng-repeat="item in vipList" ng-style="{{item.style}}">
+		<img src="../../assets/images/logo.png" class="logo-icon">
+		<div class="price-text">
+			<span ng-bind="item.price"></span>元
+		</div>
+		<div class="font-size-24">
+			即赠 <span ng-bind="item.score"></span> 悦币
+		</div>
+		<div class="font-size-30">
+			全国通用服务立享<span class="font-size-32 font-color-white">
+				<span  ng-bind="item.servicediscount * 10"></span>折	
+			</span>
+		</div>
+		<div class="recharge-btn" ng-click="recharge(item)">
+			立即充值
+		</div>
+	</div>
+</div>
+    

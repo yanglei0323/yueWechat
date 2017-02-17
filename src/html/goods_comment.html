@@ -1,0 +1,46 @@
+<div id="goods-comment-container">
+    <div class="title-bar">
+        <span class="title-bar-left" back><img src="../../assets/images/back.png"></span>
+        <span>评价</span>
+    </div>
+    <div class="goods-comment">
+        <!-- <div>商品好评率：100%</div> -->
+        <div class="tab-container">
+            <span ng-class="{'tab-btn':true,'selected':isAll}" ng-click="getCommentList('all')">
+                全部 (<span ng-bind="statistic.totalcount"></span>)
+            </span>
+            <span ng-class="{'tab-btn':true,'selected':isGood}" ng-click="getCommentList('good')">
+                好评 (<span ng-bind="statistic.positivecount"></span>)
+            </span>
+            <span ng-class="{'tab-btn':true,'selected':isMiddle}" ng-click="getCommentList('middle')">
+                中评 (<span ng-bind="statistic.moderatecount"></span>)
+            </span>
+            <span ng-class="{'tab-btn':true,'selected':isBad}" ng-click="getCommentList('bad')">
+                差评 (<span ng-bind="statistic.negativecount"></span>)
+            </span>
+            <span ng-class="{'tab-btn':true,'selected':isImg}" ng-click="getCommentList('img')">
+                有图 (<span ng-bind="statistic.imgcommentcount"></span>)
+            </span>
+        </div>
+        <div class="comment-item" ng-repeat="comment in commentList">
+            <img ng-src="{{comment.user.imgurl}}" class="user-img">
+            <div class="comment-info">
+                <div class="comment-user-info">
+                    <div>
+                        <span ng-bind="comment.user.name"></span>
+                        <img ng-src="{{comment.user.vipimgurl}}" class="vip-icon">
+                    </div>
+                    <div>
+                        <img ng-repeat="star in comment.starUrl" ng-src="{{star.path}}" class="star-icon">
+                    </div>
+                </div>
+                <div ng-bind="comment.time" class="comment-time"></div>
+                <div ng-bind="comment.content" class="comment-content"></div>
+                <div class="comment-img">
+                    <img ng-repeat="img in comment.imgArr" ng-src="{{img.path}}">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div id="order-comment-container">
+	<div class="title-bar">
+		<span class="title-bar-left" back>
+			<img src="../../assets/images/back.png">
+		</span>
+		<span>评价商品</span>
+	</div>
+	<div ng-repeat="goods in goodsList">
+		<div class="goods-info-container">
+			<img ng-src="{{goods.imgurl}}" class="goods-icon">
+			<span ng-bind="goods.name" id="goods-name"></span>
+		</div>
+		<div id="comment-info-container">
+			<div class="comment-item">
+				<span>总体评分：</span>
+				<span ng-class="{'icon-star-empty':goods.overallStar<1,'icon-star':goods.overallStar>=1,'selected':goods.overallStar>=1}" ng-click="starGoods(goods, 'overallStar', 1)" name="star"></span>
+	    		<span ng-class="{'icon-star-empty':goods.overallStar<2,'icon-star':goods.overallStar>=2,'selected':goods.overallStar>=2}" ng-click="starGoods(goods, 'overallStar', 2)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.overallStar<3,'icon-star':goods.overallStar>=3,'selected':goods.overallStar>=3}" ng-click="starGoods(goods, 'overallStar', 3)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.overallStar<4,'icon-star':goods.overallStar>=4,'selected':goods.overallStar>=4}" ng-click="starGoods(goods, 'overallStar', 4)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.overallStar<5,'icon-star':goods.overallStar>=5,'selected':goods.overallStar>=5}" ng-click="starGoods(goods, 'overallStar', 5)" name="star"></span>
+			</div>
+			<div class="comment-item">
+				<span>描述相符：</span>
+				<span ng-class="{'icon-star-empty':goods.describeStar<1,'icon-star':goods.describeStar>=1,'selected':goods.describeStar>=1}" ng-click="starGoods(goods, 'describeStar', 1)" name="star"></span>
+	    		<span ng-class="{'icon-star-empty':goods.describeStar<2,'icon-star':goods.describeStar>=2,'selected':goods.describeStar>=2}" ng-click="starGoods(goods, 'describeStar', 2)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.describeStar<3,'icon-star':goods.describeStar>=3,'selected':goods.describeStar>=3}" ng-click="starGoods(goods, 'describeStar', 3)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.describeStar<4,'icon-star':goods.describeStar>=4,'selected':goods.describeStar>=4}" ng-click="starGoods(goods, 'describeStar', 4)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.describeStar<5,'icon-star':goods.describeStar>=5,'selected':goods.describeStar>=5}" ng-click="starGoods(goods, 'describeStar', 5)" name="star"></span>
+			</div>
+			<div class="comment-item">
+				<span>服务态度：</span>
+				<span ng-class="{'icon-star-empty':goods.attitudeStar<1,'icon-star':goods.attitudeStar>=1,'selected':goods.attitudeStar>=1}" ng-click="starGoods(goods, 'attitudeStar', 1)" name="star"></span>
+	    		<span ng-class="{'icon-star-empty':goods.attitudeStar<2,'icon-star':goods.attitudeStar>=2,'selected':goods.attitudeStar>=2}" ng-click="starGoods(goods, 'attitudeStar', 2)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.attitudeStar<3,'icon-star':goods.attitudeStar>=3,'selected':goods.attitudeStar>=3}" ng-click="starGoods(goods, 'attitudeStar', 3)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.attitudeStar<4,'icon-star':goods.attitudeStar>=4,'selected':goods.attitudeStar>=4}" ng-click="starGoods(goods, 'attitudeStar', 4)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.attitudeStar<5,'icon-star':goods.attitudeStar>=5,'selected':goods.attitudeStar>=5}" ng-click="starGoods(goods, 'attitudeStar', 5)" name="star"></span>
+			</div>
+			<div class="comment-item">
+				<span>发货速度：</span>
+				<span ng-class="{'icon-star-empty':goods.deliveryStar<1,'icon-star':goods.deliveryStar>=1,'selected':goods.deliveryStar>=1}" ng-click="starGoods(goods, 'deliveryStar', 1)" name="star"></span>
+	    		<span ng-class="{'icon-star-empty':goods.deliveryStar<2,'icon-star':goods.deliveryStar>=2,'selected':goods.deliveryStar>=2}" ng-click="starGoods(goods, 'deliveryStar', 2)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.deliveryStar<3,'icon-star':goods.deliveryStar>=3,'selected':goods.deliveryStar>=3}" ng-click="starGoods(goods, 'deliveryStar', 3)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.deliveryStar<4,'icon-star':goods.deliveryStar>=4,'selected':goods.deliveryStar>=4}" ng-click="starGoods(goods, 'deliveryStar', 4)" name="star"></span>
+	            <span ng-class="{'icon-star-empty':goods.deliveryStar<5,'icon-star':goods.deliveryStar>=5,'selected':goods.deliveryStar>=5}" ng-click="starGoods(goods, 'deliveryStar', 5)" name="star"></span>
+			</div>
+		</div>
+		<div id="comment-text-container">
+			<textarea name="comment-text" id="comment-text" placeholder="写下你想说的..." ng-model="goods.content"></textarea> 
+			
+		</div>
+	</div>
+	<div name="check-anonymity">
+		<span ng-class="{'icon-check-empty':!anonymity,'icon-check':anonymity,'text-highlight':anonymity}" ng-click="checkAnonymity()"></span>
+		<span>匿名提交</span>
+	</div>
+	<div id="submit-btn" ng-click="submit()">
+		提交
+	</div>
+</div>
